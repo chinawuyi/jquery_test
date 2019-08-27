@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style type="text/css">
+        iframe{border: none;width: 100%;min-height: 240px;}
+        .layui-collapse{margin-top: 10px;}
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="layui-collapse">
+        <div class="layui-colla-item" id='driver_add'>
+            <h2 class="layui-colla-title">车辆基本信息</h2>
+            <div class="layui-colla-content layui-show">
+                <iframe src='' urlPageName='vehicle_add.html' style='height:700px;' name='driverAdd' id='driverAdd'></iframe>
+            </div>
+        </div>
+        <div class="layui-colla-item" id='driver_ext'>
+            <h2 class="layui-colla-title">车辆扩展信息</h2>
+            <div class="layui-colla-content">
+                <iframe src='' urlPageName='vehicle_ext_add.html' style='height:750px;'></iframe>
+            </div>
+        </div>
+        <div class="layui-colla-item" id='driver_ins'>
+            <h2 class="layui-colla-title">车辆保险信息</h2>
+            <div class="layui-colla-content">
+                <iframe src='' urlPageName='vehicle_ins_add.html' style='height:670px;'></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/vehicle_info.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}一键报警{% endblock %}
+{% block header %}
+<style type="text/css">
+.layui-form-label{
+      width: 85px;
+    }
+    .layui-input-block{
+      margin-left: 115px;
+    }    
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">订单ID：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入订单号" autocomplete="off" class="layui-input" name='orderId' id='orderId'>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户ID：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入用户ID" autocomplete="off" class="layui-input" name='userId' id='userId'>
+                        </div>
+                    </div>
+                    <button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/alarms_list.js"></script>
+{% endblock %}

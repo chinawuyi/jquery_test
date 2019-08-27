@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style>
+        .couponType{display: none;}
+        .layui-table td{text-align: left;}
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title">券编号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="暂无数据" id="userCouponId" type="text" name="userCouponId" readonly>
+                </td>
+                <td class="label-title">模板号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="暂无数据" id="couponRuleId" type="text" name="couponRuleId" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">批次号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="暂无数据" id="couponBatchId" type="text" name="couponBatchId" readonly>
+                </td>
+                <td class="label-title">领取人手机号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="暂无数据" id="userPhone" type="text" name="userPhone" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">使用时间:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="" name="" readonly>
+                </td>
+                <td class="label-title">订单号:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="orderId" name="orderId" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">发放时间:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂未填写" type="text" id="sendTimeFormat" name="sendTimeFormat" readonly>
+                </td>
+                <td class="label-title">失效日期:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="endTimeFormat" name="endTimeFormat" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">券名称:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="couponName" name="couponName" readonly>
+                </td>
+                <td class="label-title">券类型:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="couponTypeText" name="couponTypeText" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">折扣数值:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="limitAmount" name="limitAmount" readonly>
+                </td>
+                <td class="label-title">状态:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="statusText" name="statusText" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">使用城市:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="operation" name="operation" readonly>
+                </td>
+                <td class="label-title">使用车型:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="暂无数据" type="text" id="" name="" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">使用说明:</td>
+                <td class="label-content" colspan="3">
+                    <textarea class="form-control layui-textarea" placeholder="暂无数据" type="text" id="remark" name="" readonly></textarea>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript">
+layui.use(['common','table', 'layer', 'dict', 'permission','laydate'], function() {
+    var common = layui.common;
+    var dict = layui.dict;
+    var couponList = {
+        eventFun:{
+
+        },
+        getData:function(){
+            $.postApi('/management/v1/coupon/record/query/paging',{
+                    "userCouponId": $.getUrlData().id
+                },function(res)
+                {
+                    if(res.code == 0)
+                    {
+                        var formData=res.content.data[0]
+                        for (var key in formData){
+                            $('#'+key).val(formData[key])
+                        }
+                    }
+                });
+        }
+    }
+    couponList.getData();
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}数据字典{% endblock %}
+{% block header %}
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/dataTables.bootstrap.min.css">
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="form-inline" onsubmit="return false">
+                <div align="left">
+                    <table style="width: 60%;">
+                        <tr>
+                            <td>名称：
+                                <input id="name" name="name" type="text" class="form-control" placeholder="名称">
+                                code：
+                                <input id="code" name="code" type="text" class="form-control" placeholder="code">
+                            </td>
+                            <td><button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+
+                        <button class="layui-btn layui-btn-sm"  lay-event="add" permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe608;</i> 添加
+                        </button>
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/config_dict_common.js"></script>
+{% endblock %}
+

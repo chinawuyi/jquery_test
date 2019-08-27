@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+                <tr >
+                    <td class="label-title"><span class="required-icon">*</span>任务全类名:</label></td>
+                    <td class="label-content">
+                        <input class="form-control" placeholder="任务全类名"  name="jobClassName" id="jobClassName" lay-verify="required"  maxlength="50" type="text">
+                    </td>
+                    <td class="label-title">任务触发URL:</label></td>
+                    <td class="label-content">
+                        <input class="form-control" name="jobTriggerUrl" id="jobTriggerUrl" type="text"  maxlength="100" lay-verify="required">
+                    </td>
+                </tr>
+                <tr >
+                    <td class="label-title">cron表达式:</label></td>
+                    <td class="label-content">
+                        <input class="form-control"  name="cronExpression" id="cronExpression" type="text" lay-verify="required">
+                    </td>
+                    <td class="label-title">任务描述:</label></td>
+                    <td class="label-content">
+                        <input class="form-control"  name="description" id="description" type="text">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/dispatcher_task_add.js"></script>
+</body>
+</html>

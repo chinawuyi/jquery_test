@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>城市名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="城市名称"  lay-verify="required|cityNameRule" type="text" id="name" name="name" maxlength="15">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>城市编码:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="城市编码" lay-verify="required|cityCodeRule" type="text" id="code" name="code">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>拼音简写:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="拼音简写"  lay-verify="required|cityPyRule" type="text" id="pinyin" name="pinyin">
+                </td>
+                <td class="label-title"></td>
+                <td class="label-content">
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/config_business_city_add.js"></script>
+</body>
+</html>

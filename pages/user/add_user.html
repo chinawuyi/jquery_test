@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+			<tr>
+                <td class="label-title">头像预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">头像上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='headImgUrl' value="" style="display:none;"/>
+                        <input class="real_file_btn" type="file" id="headImgUrl" accept="" name="headImgUrl"/>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>用户名:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入用户名" autocomplete="off" type="text" id="username" name="username" lay-verify="required|userNameCheck">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>密码:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入密码" autocomplete="new-password" type="password" id="password" name="password" lay-verify="passwordCheck">
+                    <button type="button" class="layui-btn" id='changePassWord' style="display: none;">
+                        <i class="layui-icon">&#xe673;</i>修改密码
+                    </button>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>昵称:</td>
+                <td class="label-content">
+					<input class="form-control" placeholder="请输入昵称" type="text" id="nickname" name="nickname" lay-verify="required|userNameCheck">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>手机号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入手机号" type="text" id="phone" name="phone" lay-verify="required|phone">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">出生年月日:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择出生年月日" type="text" id="birthday" name="birthday">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>邮箱:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入邮箱" type="email" id="email" name="email" lay-verify="email">
+                </td>
+            </tr>
+            <tr>
+                
+                <td class="label-title">性别:</td>
+                <td class="label-content" >
+                    <select class="form-control input-sm" id="sex" name="sex" value="" >
+                        <option value="">请选择</option>
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+				</td>
+                <td class="label-title"><span class="required-icon">*</span>角色:</td>
+                <td class="label-content" id='roleIds'></td>               
+                </td>
+            </tr>
+            <tr>
+                
+            </tr>            
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/add_user.js"></script>
+</body>
+</html>

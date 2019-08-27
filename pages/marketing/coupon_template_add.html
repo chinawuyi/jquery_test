@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style>
+        .couponType{display: none;}
+        .layui-table td{text-align: left;}
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>优惠券名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入优惠券名称"  lay-verify="required" id="couponName" type="text" name="couponName">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>优惠券类型:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="couponType" name="couponType" value="" lay-verify="required" lay-filter="couponType">
+                        <option value=''>请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id='couponType1' class="couponType">
+                <td class="label-content" colspan="4" >
+                    <label class="layui-form-label" style='display: inline-block;float:none;'><span class="required-icon">*</span>满</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="limitAmount" placeholder="￥" autocomplete="off" class="layui-input" id="">
+                    </div>
+                    <div class="layui-form-mid" style='display: inline-block;float:none;'>免</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="couponValue" placeholder="￥" autocomplete="off" class="layui-input">
+                    </div>
+                </td>
+            </tr>
+            <tr id='couponType2' class="couponType">
+                <td class="label-content" colspan="4" >
+                    <label class="layui-form-label" style='display: inline-block;float:none;'><span class="required-icon">*</span>满</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="limitAmount" placeholder="￥" autocomplete="off" class="layui-input" id="">
+                    </div>
+                    <div class="layui-form-mid" style='display: inline-block;float:none;'>减</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="couponValue" placeholder="￥" autocomplete="off" class="layui-input">
+                    </div>
+                </td>
+            </tr>
+            <tr id='couponType3' class="couponType">
+                <td class="label-content" colspan="4" >
+                    <label class="layui-form-label" style='display: inline-block;float:none;'><span class="required-icon">*</span>满</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="limitAmount" placeholder="￥" autocomplete="off" class="layui-input" id="">
+                    </div>
+                    <div class="layui-form-mid" style='display: inline-block;float:none;'>可享</div>
+                    <div class="layui-input-inline" style="width: 150px;">
+                        <input type="text" name="couponValue" placeholder="请输入折扣10-100" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid" style='display: inline-block;float:none;'>折</div>
+                </td>
+            </tr>
+            <tr id='couponType4' class="couponType">
+                <td class="label-content" colspan="4" >
+                    <label class="layui-form-label" style='display: inline-block;float:none;'><span class="required-icon">*</span>满</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="limitAmount" placeholder="￥" autocomplete="off" class="layui-input" id="">
+                    </div>
+                    <div class="layui-form-mid" style='display: inline-block;float:none;'>可用</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="couponValue" placeholder="请输入代金券金额" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid" style='display: inline-block;float:none;'>(元)代金券</div>
+            
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>开始时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="开始时间" id="startTime" type="text" name="startTime" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>结束时间:</td>
+                <td class="label-content">
+                    <input class="form-control invalidTypeAttr" placeholder="结束时间" id="endTime" type="text" name="endTime" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>优惠券失效类型:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="mode" name="mode" lay-verify="required" lay-filter="mode">
+                        <option value=''>请选择</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon effectiveTime invalidType" style="display: none;">*</span>有效天数:</td>
+                <td class="label-content">
+                    <input class="form-control invalidTypeAttr" placeholder="请填写有效天数" id="effectiveTime" type="text" name="effectiveTime" lay-verify="number">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">适用车型:</td>
+                <td class="label-content" id="">
+                    <input class="form-control" placeholder="请选择适用车型" type="text" id="carTypeIdList" name="carTypeIdList" readonly>
+                </td>
+                <td class="label-title">适用城市</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择适用城市" type="text" id="cityList" name="cityList" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>发券总量:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请填写发券总量" type="text" id="totalQuantity" name="totalQuantity" lay-verify="number">
+                </td>
+                <td class="label-title">适用平台</td>
+                <td class="label-content" id="platformList">
+                    <!-- <input type="checkbox" name="platformList" title="IOS" lay-skin="primary" value="IOS">
+                    <input type="checkbox" name="platformList" title="ANDROID" lay-skin="primary" value="ANDROID"> -->
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">产品类型:</td>
+                <td class="label-content" id="productTypeIdList">
+                
+                </td>
+                <td class="label-title">生效延迟的天数</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请填写生效延迟的天数" type="text" id="delayDay" name="delayDay" lay-verify="number">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">说明:</td>
+                <td class="label-content" colspan="3">
+                    <textarea name="remark" placeholder="请输入内容" class="layui-textarea form-control" id='remark'></textarea>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/coupon_template_add.js"></script>
+</body>
+</html>

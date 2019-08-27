@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>司机使用APP版本号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入司机使用APP版本号" type="text" id="appVersion" name="appVersion" lay-verify="required">
+                </td>
+                <td class="label-title">巡游出租汽车驾驶员资格证号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入巡游出租汽车驾驶员资格证号" type="text" id="certificateB" name="certificateB">
+                </td>                
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>出租资格类别:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="commercialType" name="commercialType" value="" lay-verify="required">
+                        <option value="">请选择出租资格类别</option>
+                        <option value="1">网络预约出租车</option>
+                        <option value="2">巡游出租车</option>
+                        <option value="3">合乘车</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>驾驶员合同（或协议）签署公司标识:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入公司标识" type="text" id="contractCompany" name="contractCompany" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>合同（或协议）有效期止:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择有效期" type="text" id="contractOff" name="contractOff" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>合同（或协议）有效期起:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择有效期" type="text" id="contractOn" name="contractOn" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">户口地址或常住地址:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入常住地址" type="text" id="driverAddress" name="driverAddress" >
+                </td>
+                <td class="label-title">户口登记机关名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入户口登记机关名称" type="text" id="driverCensus" name="driverCensus">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>驾驶员通信地址:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入通信地址" type="text" id="driverContactAddress" name="driverContactAddress" lay-verify="required">
+                </td>
+                <td class="label-title">驾驶员学历:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入驾驶员学历" type="text" id="driverEducation" name="driverEducation">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>使用地图类型:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="mapType" name="mapType" value="" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="1">百度</option>
+                        <option value="2">高德</option>
+                        <option value="3">其他</option>
+                    </select>
+                </td>
+                <td class="label-title">驾驶员外语能力:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入驾驶员外语能力" type="text" id="driverLanguageLevel" name="driverLanguageLevel" >
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">驾驶员婚姻状况:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="driverMaritalStatus" name="driverMaritalStatus" value="">
+                        <option value="">请选择</option>
+                        <option value="已婚">已婚</option>
+                        <option value="未婚">未婚</option>
+                        <option value="离异">离异</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>是否巡游出租汽车驾驶员:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="taxiDriver" name="taxiDriver" value="" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td> 
+                <!-- <td class="label-title"><span class="required-icon">*</span>准驾车型:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入司机类型" type="text" id="driverType" name="driverType" lay-verify="required">
+                </td>               -->
+            </tr>
+            <tr>
+                <td class="label-title">紧急情况联系人:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入紧急情况联系人" type="text" id="emergencyContact" name="emergencyContact">
+                </td> 
+                <td class="label-title"><span class="required-icon">*</span>紧急情况联系人电话:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入电话" type="text" id="emergencyContactPhone" name="emergencyContactPhone" lay-verify="required|phone">
+                </td>              
+            </tr>
+            <tr>
+                <td class="label-title">紧急情况联系人通讯地址:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入通讯地址" type="text" id="emergencyContactAddress" name="emergencyContactAddress">
+                </td> 
+                <td class="label-title">是否专职驾驶员:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="fulltimeDriver" name="fulltimeDriver" value="">
+                        <option value="">请选择</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>              
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>司机手机运营商:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="netType" name="netType" value="" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="1">中国联通</option>
+                        <option value="2">中国移动</option>
+                        <option value="3">中国电信</option>
+                        <option value="4">其他</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>初次领取驾驶证日期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择初次领取驾驶证日期" type="text" id="getDriverLicenseDate" name="getDriverLicenseDate" lay-verify="required">
+                </td>              
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>初次领取资格证日期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择资格证日期" type="text" id="getNetworkCarProofDate" name="getNetworkCarProofDate" lay-verify="required">
+                </td> 
+                <td class="label-title">是否在驾驶员黑名单内:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="inDriverBlackList" name="inDriverBlackList" value="">
+                        <option value="">请选择</option>
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>              
+            </tr>
+            <!-- <tr>
+                <td class="label-title">机动车驾驶证扫描件文件:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入机动车驾驶证扫描件文件" type="text" id="licensePhoto" name="licensePhoto">
+                </td> 
+                <td class="label-title"><span class="required-icon">*</span>机动车驾驶证扫描件文件编号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入文件编号" type="text" id="licensePhotoId" name="licensePhotoId" lay-verify="required">
+                </td>              
+            </tr> -->
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>资格证发证日期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择资格证发证日期" type="text" id="networkCarIssueDate" name="networkCarIssueDate" lay-verify="required">
+                </td> 
+                <td class="label-title"><span class="required-icon">*</span>网络预约出租汽车驾驶员证发证机构:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入发证机构" type="text" id="networkCarIssueOrganization" name="networkCarIssueOrganization" lay-verify="required">
+                </td>              
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>网络预约出租汽车驾驶员证有效期止:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择有效期止" type="text" id="networkCarProofOff" name="networkCarProofOff" lay-verify="required">
+                </td> 
+                <td class="label-title"><span class="required-icon">*</span>网络预约出租汽车驾驶员证有效期起:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择有效期起" type="text" id="networkCarProofOn" name="networkCarProofOn" lay-verify="required">
+                </td>              
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>网络预约出租汽车驾驶员资格证号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入资格证号" type="text" id="certificateA" name="certificateA" lay-verify="required">
+                </td> 
+                <td class="label-title"><span class="required-icon">*</span>司机手机型号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请填写司机手机型号" type="text" id="mobileModel" name="mobileModel" lay-verify="required">
+                </td>
+                              
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/driver_ext.js"></script>
+</body>
+</html>

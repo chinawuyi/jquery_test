@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style>
+        #chooseBox .label-title{
+            text-align: left;
+        }
+        #chooseTime{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  id="jsform" lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+                <tr>
+                    <td colspan="12">信息设置</td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon">*</span>方案名称</label>
+                    </td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control" placeholder="方案名称"  lay-verify="required"  id="chargePkgName"  type="text"  name="chargePkgName">
+                    </td>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon">*</span>服务车型
+                    </td>
+                    <td class="label-content">
+                        <select class="form-control input-sm" id="carTypeId"  lay-filter="carTypeId" lay-verify="required" name="carTypeId">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon">*</span>产品类型
+                    </td>
+                    <td class="label-content" colspan="3">
+                        <select class="form-control input-sm" id="productTypeId"  lay-filter="productTypeId" lay-verify="required" name="productTypeId">
+                        </select>
+                    </td>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon">*</span>属性
+                    </td>
+                    <td class="label-content" colspan="3">
+                        <select class="form-control input-sm" id="chargePkgType"  lay-filter="chargePkgType"  lay-verify="required" name="chargePkgType">
+                            <option value="">全部</option>
+                            <option value="0">默认计价</option>
+                            <option value="1">特殊计价</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon">*</span>生效时间
+                    </td>
+                    <td class="label-content" colspan="3">
+                        <input type="text" class="form-control input-sm" id="time"  lay-filter="time" lay-verify="required" name="time">
+                    </td>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon">*</span>生效城市
+                    </td>
+                    <td class="label-content" colspan="3">
+                        <select class="form-control input-sm" id="city"  lay-filter="city" lay-verify="required" name="city">
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">
+                        <span class="required-icon"></span>时间属性
+                    </td>
+                    <td class="label-content" colspan="9" style="text-align:left;" id="dateType">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12">基础计费(<span class="required-icon">*</span>包含里程和包含时间可设为0)</td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>起步价(¥)</label></td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="feeStart"  id="feeStart"  type="text"  name="feeStart">
+                    </td>
+                    <td class="label-title" colspan="3"></td>
+                    <td class="label-content" colspan="3"></td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>包含里程(km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="freeDistance"  type="text"  name="freeDistance">
+                    </td>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>包含时间(min)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="freeTime"  type="text"  name="freeTime">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12">远途计费(<span class="required-icon">*</span>远途费及远途定义可设为0，设为0则此档远途定义不生效)</td>
+                </tr>
+                </tbody>
+                <tbody id='longDistanceList'>
+                <tr>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>远途费1(¥/km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="feeLongPerKilometer1"  type="text"  name="feeLongPerKilometer1">
+                    </td>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>远途定义1(km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="freeLongDistance1"  type="text"  name="freeLongDistance1">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>远途费2(¥/km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="feeLongPerKilometer2"  type="text"  name="feeLongPerKilometer2">
+                    </td>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>远途定义2(km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="freeLongDistance2"  type="text"  name="freeLongDistance2">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>远途费3(¥/km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="feeLongPerKilometer3"  type="text"  name="feeLongPerKilometer3">
+                    </td>
+                    <td class="label-title" colspan="3"><span class="required-icon">*</span>远途定义3(km)</td>
+                    <td class="label-content" colspan="3">
+                        <input class="form-control"  lay-verify="required"  id="freeLongDistance3"  type="text"  name="freeLongDistance3">
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="12" id="chooseTime">时段计费(<span class="required-icon">*</span>请选择时段<i class="layui-icon">&#xe625;</i>)</td>
+                    <!-- <td colspan="12">
+                        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                            <li class="layui-nav-item layui-nav-itemed">
+                            <a href="javascript:;">默认展开</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">选项1</a></dd>
+                                <dd><a href="javascript:;">选项2</a></dd>
+                                <dd><a href="">跳转</a></dd>
+                            </dl>
+                            </li>
+                        </ul>
+                    </td> -->
+                </tr>
+            </tbody>
+            <tbody id='chooseBox'>
+                
+            </tbody>
+            <tbody>
+                <tr>
+                    <td class="label-title" colspan="4"></td>
+                    <td class="label-content" colspan="4"><span class="required-icon">*</span>里程费单价</td>
+                    <td class="label-content" colspan="4"><span class="required-icon">*</span>时长费单价</td>
+                </tr>
+            </tbody>
+            <tbody id='segmentList'>
+                </tbody>
+                <tbody>
+                <tr>
+                    <td colspan="12">其他</td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">备注</td>
+                    <td class="label-content" colspan="9">
+                        <input class="form-control" type="text" id="remark"  name="remark">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">创建人</label></td>
+                    <td class="label-content" colspan="3"><input class="form-control" type="text" id="founder"  name="founder" disabled></td>
+                    <td class="label-title" colspan="3">创建日期</label></td>
+                    <td class="label-content" colspan="3"><input class="form-control" type="text" id="createTime"  name="createTime" disabled></td>
+                </tr>
+                <tr>
+                    <td class="label-title" colspan="3">最后修改人</label></td>
+                    <td class="label-content" colspan="3"><input class="form-control" type="text" id="modifier"  name="modifier" disabled></td>
+                    <td class="label-title" colspan="3">修改日期</label></td>
+                    <td class="label-content" colspan="3"><input class="form-control" type="text" id="updateTime"  name="updateTime" disabled></td>
+                </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">取消</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">确认</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/charge_add.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style>
+        .driverCont{display: none;}
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title">支付记录ID:</td>
+                <td class="label-content" id="balanceRecordId">
+                </td>
+                <td class="label-title">用户ID:</td>
+                <td class="label-content" id="userId">
+                    
+                </td>                
+            </tr>
+            <tr>
+                <td class="label-title">账户ID:</td>
+                <td class="label-content" id="accountId">                    
+                </td>
+                <td class="label-title">内部流水单号:</td>
+                <td class="label-content" id="tradeNo">                    
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">支付渠道:</td>
+                <td class="label-content" id="channel">                    
+                </td>
+                <td class="label-title">支付渠道流水号:</td>
+                <td class="label-content" id="transactionId">                    
+                </td>
+            </tr>
+            <tr class=''>
+                <td class="label-title">订单ID:</td>
+                <td class="label-content" id="orderId">                    
+                </td>
+                <td class="label-title">记录时间:</td>
+                <td class="label-content" id="recordTime">                    
+                </td>
+            </tr>
+            <tr class=''>
+                <td class="label-title">账户类型:</td>
+                <td class="label-content" id="type">                    
+                </td>
+                <td class="label-title">消费ID:</td>
+                <td class="label-content" id="consumeRecordId">                    
+                </td>
+            </tr>
+            <tr class=''>
+                <td class="label-title">变更前金额<br />(单位：分):</td>
+                <td class="label-content" id="oldAmount">                    
+                </td>
+                <td class="label-title">变更后金额<br />(单位：分):</td>
+                <td class="label-content" id="newAmount">                    
+                </td>
+            </tr>
+            <tr class=''>
+                <td class="label-title">变更金额<br />(单位：分):</td>
+                <td class="label-content" id="amount">                    
+                </td>
+                <td class="label-title">商户类型:</td>
+                <td class="label-content" id="merchantType">                    
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/pay_record_view.js"></script>
+</body>
+</html>

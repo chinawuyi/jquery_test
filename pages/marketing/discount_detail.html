@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style>
+        .layui-table td{text-align: right;}
+        .form-control{width: 80%; float: left;}
+        .layui-form-mid {float: right;}
+        .layui-form-select dl dd{text-align: left;}
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">折扣基本信息</li>
+            <li>折扣详情</li>
+        </ul>
+        <div class="layui-tab-content" style="min-height: 100px;">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane1" lay-filter="discountBase" onsubmit="return false">
+                    <table class="layui-table">
+                        <tbody>
+                        <tr>
+                            <td class="label-title">折扣车型:</td>
+                            <td class="label-content">
+                                <select class="form-control input-sm" id="carTypeId" name="carTypeId" value="">
+                                    <option value=''>请选择</option>
+                                </select>
+                            </td>
+                            <td class="label-title"><span class="required-icon">*</span>城市:</td>
+                            <td class="label-content">
+                                <select class="form-control input-sm" id="city" name="city" value="" lay-verify="required">
+                                    <option value=''>请选择</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-title">产品类型:</td>
+                            <td class="label-content">
+                                <select class="form-control input-sm" id="productTypeId" name="productTypeId" value="">
+                                    <option value=''>请选择</option>
+                                </select>
+                            </td>
+                            <td class="label-title">备注:</td>
+                            <td class="label-content">
+                                <textarea name="remark" placeholder="请输入备注" class="layui-textarea form-control" id='remark'></textarea>
+                            </td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                    <fieldset>
+                        <div class="form-actions">
+                            <div class="row" align="center">
+                                <div class="col-md-12">
+                                    <button class="layui-btn" lay-submit lay-filter="discountBase" id="">保存</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+            <div class="layui-tab-item">
+                <form class="layui-form layui-form-pane1"  lay-filter="discountDetail" onsubmit="return false">
+                    <table class="layui-table">
+                        <tbody id='discountDetail'>
+                        
+                        
+                        </tbody>
+                    </table>
+                    <fieldset>
+                        <div class="form-actions">
+                            <div class="row" align="center">
+                                <div class="col-md-12">
+                                    
+                                    <button class="layui-btn" lay-submit lay-filter="discountDetail">保存</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/discount_detail.js"></script>
+</body>
+</html>

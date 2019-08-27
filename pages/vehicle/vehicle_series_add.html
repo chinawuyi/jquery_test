@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>品牌选择:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm"  lay-filter="carBrandId" lay-verify="carBrandId" id="carBrandId" name="carBrandId">
+                    </select>
+                </td>
+                <!-- <td class="label-title"><span class="required-icon">*</span>车型选择:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="status2" lay-verify="carTypeId" name="carTypeId">
+
+                    </select>
+                </td> -->
+                <td class="label-title"><span class="required-icon">*</span>车系名称:</td>
+                <td class="label-content">
+                    <!-- <select class="form-control input-sm"  id="carModelId" lay-filter="carModelId" lay-verify="required" name="carModelId">
+
+                    </select> -->
+                    <input class="form-control" placeholder="车系名称"   lay-verify="required|name" type="text" id="name"  name="name" maxlength="20">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">车系名称(EN):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车系名称(EN)" type="text" id="enName" name="enName" maxlength="20" lay-verify="enNameRule">
+                </td>
+                <td class="label-title"></td>
+                <td class="label-content">
+                </td>
+            </tr>
+            <!-- <tr>
+                <td class="label-title"><span class="required-icon">*</span>城市:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="city"  lay-verify="required|city" name="city">
+
+                    </select>
+                </td>
+                <td class="label-title"></td>
+                <td class="label-content">
+                </td>
+            </tr> -->
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/vehicle_series_add.js"></script>
+</body>
+</html>

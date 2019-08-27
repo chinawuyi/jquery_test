@@ -1,0 +1,76 @@
+﻿{% extends '../pages-layout/default.html' %}
+{% block title %}如祺出行{% endblock %}
+{% block content %}
+<div class="layui-layout layui-layout-admin" style="border-bottom: solid 5px #1aa094;">
+  <!-- 标题栏 -->
+  <div class="layui-header header header-demo">
+    <div class="layui-main">
+      <div class="admin-login-box">
+        <a class="logo" style="left: 0;" href="/">
+          <span style="font-size: 22px;">如祺出行</span>
+        </a>
+        <div class="admin-side-toggle">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+      </div>
+      <ul class="layui-nav" pc>
+        <li class="layui-nav-item">
+          <a href='javascript:;' lay-id="-997" data-url="pages/notice/noticePubList.html"><i class="fa fa-envelope-o" aria-hidden="true" title="公告" unreadNotice></i></a>
+        </li>
+        <li class="layui-nav-item" pc>
+          <a href="javascript:;" class="admin-header-user">
+            <img />
+            <span></span>
+          </a>
+          <dl class="layui-nav-child">
+            <dd>
+              <a href='javascript:;' lay-id="-999" data-url="pages/user/update_myself.html"><i class="fa fa-user-circle" aria-hidden="true"></i> 个人信息</a>
+            </dd>
+            <!-- <dd>
+              <a href='javascript:;' lay-id="-998" data-url="pages/user/update_head_img.html"><i class="fa fa-drupal" aria-hidden="true"></i> 头像</a>
+            </dd> -->
+            <dd>
+              <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a>
+            </dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- 菜单 -->
+  <div class="layui-side layui-bg-black" id="admin-side">
+    <div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side">
+      <ul id="menu" class="layui-nav layui-nav-tree" lay-filter="demo"></ul>
+    </div>
+  </div>
+  <div class="layui-body" style="bottom: 0;border-left: solid 2px #1AA094;" id="admin-body">
+    <div class="layui-tab admin-nav-card layui-tab-brief" lay-allowClose="true" lay-filter="admin-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">
+          <i class="fa fa-dashboard" aria-hidden="true"></i>
+          <cite>总览</cite>
+        </li>
+      </ul>
+      <div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
+        <div class="layui-tab-item layui-show">
+          <iframe src="dashboard.html"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="layui-footer footer footer-demo" id="admin-footer">
+    <div>
+      <p>如祺出行</p>
+    </div>
+  </div>
+  <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+  </div>
+  <div class="site-mobile-shade"></div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="js/pages/index.js"></script>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{
+  "name": "travel_platform_management",
+  "version": "1.0.0",
+  "description": "front end for travel_platform_management project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "gulp build",
+    "watch": "gulp build:w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "express": "^4.16.4",
+    "gulp": "^4.0.0",
+    "gulp-swig": "^0.8.0",
+    "http-proxy-middleware": "^0.19.1"
+  },
+  "dist": "../resources/static",
+  "proxy": {
+    "/management": {
+      "target": "http://111.230.118.77",
+      "changeOrigin": true
+    },
+    "/dicts": {
+      "target": "http://111.230.118.77",
+      "changeOrigin": true
+    }
+  },
+  "dependencies": {
+    "cos-js-sdk-v5": "^0.5.7"
+  }
+}

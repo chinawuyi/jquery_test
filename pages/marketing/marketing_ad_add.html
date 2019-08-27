@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title">图片预览:</label></td>
+                <td class="label-content" id="jsphotoshow"></td>
+                <td class="label-title">图片上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input class="real_file_btn" type="file" id="uploadImg" accept="" name="file" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>标题:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="标题"  lay-verify="required" id="title"  type="text"  name="title">
+                </td>
+                <td class="label-title">城市:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="city" name="city" value="">
+                        <option value=''>请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">开始时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="开始时间"  lay-verify="startTime"  id="startTime" type="text" name="startTime">
+                </td>
+                <td class="label-title">结束时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="结束时间"  lay-verify="endTime"  id="endTime" type="text" name="endTime">
+
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>客户端:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="platform" name="platform" lay-verify="required">
+                        <option value=''>请选择</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>模块选择:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="module" name="module" value="" lay-verify="required">
+                        <option value=''>请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">跳转地址:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="跳转地址" type="text" id="linkUrl"  name="linkUrl">
+                </td>
+                <td class="label-title">排序</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="排序" type="text" id="sort"  name="sort" lay-verify="number">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/marketing_ad_add.js"></script>
+</body>
+</html>

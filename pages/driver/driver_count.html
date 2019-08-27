@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>乘客被投诉次数:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入乘客被投诉次数" type="text" id="complainedCount" name="complainedCount" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>统计周期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入统计周期" type="text" id="cycle" name="cycle" lay-verify="required">
+                </td>                
+            </tr>
+            <tr>
+                <td class="label-title">完成订单次数:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入完成订单次数" type="text" id="orderCount" name="orderCount">
+                </td>
+                <td class="label-title">交通事故次数:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入交通事故次数" type="text" id="trafficAccidentCount" name="trafficAccidentCount">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>交通违章次数:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入交通违章次数" type="text" id="trafficViolationCount" name="trafficViolationCount" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>接单违约次数:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入接单违约次数" type="text" id="violateRecord" name="violateRecord" lay-verify="required">
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/driver_count.js"></script>
+</body>
+</html>

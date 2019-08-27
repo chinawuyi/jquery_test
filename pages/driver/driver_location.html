@@ -1,0 +1,74 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}实时监控{% endblock %}
+{% block header %}
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=YNCBZ-PDLWW-KA3R5-OSVRL-QNL6Q-PDFZN"></script>
+<style type="text/css"> 
+  .layui-form-label{
+    width: 85px;
+  }
+  .layui-input-block{
+    margin-left: 115px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+  #mapCont{width: 100%;height: 500px;}
+  .mapContainer{position: relative;}
+  .showInfoLayer{display: none; height: 160px;width: 400px;position: absolute;bottom: 10px;right: 10px;background: #fff;border-radius: 4px;box-shadow: 2px 2px 2px #ccc;padding:0 15px;}
+  .showInfoLayer li{width: 40%;padding: 0 5%; float: left;;height: 40px;border-bottom: 1px solid #eaeaea;text-align: right;line-height: 40px;}
+  .showInfoLayer li .driverInfo{width: 90px;text-align: left;float: right;height: 30px;}
+  .close{position: absolute;bottom: 140px;right: 10px;z-index: 9;cursor: pointer;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <header style="height: 100%">
+                    <form class="layui-form" onsubmit="return false">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">服务城市：</label>
+                                <div class="layui-input-block">
+                                    <select class="form-control input-sm" id="locationCityCode" name="locationCityCode">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">定位城市：</label>
+                                <div class="layui-input-block">
+                                    <select class="form-control input-sm" id="srvCityCode" name="srvCityCode">
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+                        </div>
+                    </form>
+                </header>
+                <div class='mapContainer'>
+                    <div id='mapCont'>
+                    </div>
+                    <div class='showInfoLayer'>
+                        <i class="layui-icon close">&#x1006;</i> 
+                        <ul class=''>
+                            <li>ID：<span class='driverInfo' valName='driverId'></span></li>
+                            <li>姓名：<span class='driverInfo' valName='name'></span></li>
+                            <li>手机号：<span class='driverInfo' valName='phone'></span></li>
+                            <li>司机类型：<span class='driverInfo' valName='driverType'></span></li>
+                            <li>车辆品牌：<span class='driverInfo' valName='carBrand'></span></li>                       
+                            <li>车型：<span class='driverInfo' valName='carModel'></span></li>
+                            <li>车牌：<span class='driverInfo' valName='carNumber'></span></li>
+                            <li>颜色：<span class='driverInfo' valName='color'></span></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+<script type="text/javascript" src="/js/pages/driver_location.js"></script>
+{% endblock %}

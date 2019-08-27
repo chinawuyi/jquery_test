@@ -1,0 +1,103 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}价格管理{% endblock %}
+{% block header %}
+<style type="text/css">
+    .layui-form-label{
+      width: 85px;
+    }
+    .layui-input-block{
+      margin-left: 115px;
+    }
+    .layui-input{padding-right:30px; }
+    .form-btnField{margin-left: 20px;}
+    .layui-rate{padding: 0;}
+  </style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">方案名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入名称" autocomplete="off" class="layui-input" name='chargePkgName' id="chargePkgName">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">属性：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="chargePkgType" name="chargePkgType">
+                                <option value="">全部</option>
+                                <option value="0">默认计价</option>
+                                <option value="1">特殊计价</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">城市：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="city" name="city">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">服务车型：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="carTypeId" name="carTypeId">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="status" name="status">
+                                <option value="">全部</option>
+                                <option value="1">启用</option>
+                                <option value="2">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">产品类型：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="productTypeId" name="productTypeId">
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:charge:querylist" lay-submit lay-filter="searchLog"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div> 
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                        <button class="layui-btn layui-btn-sm" id="jsVehicleBrandAdd" lay-event="add" permission="sys:charge:add">
+                            <i class="layui-icon">&#xe608;</i> 新增
+                        </button>
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/charge_list.js"></script>
+{% endblock %}
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>分类名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="分类名称"  lay-verify="required|categoryNameRule" type="text" id="name" name="name" maxlength="20">
+                </td>
+                <td class="label-title">分类编码:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="分类编码" type="text" id="code" name="code">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>父分类编码:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="分类名称"  lay-verify="required"type="text" value="0" readonly="readonly" id="parentCode" name="parentCode">
+                </td>
+                <td class="label-title">是否叶子节点:</td>
+                <td class="label-content switchinput" >
+                    <input type="checkbox" name="isLeaf"  id="isLeaf" value="1" lay-skin="switch" lay-text="是|否" checked>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>是否多级目录:</td>
+                <td class="label-content switchinput">
+                    <input type="checkbox" style="display:none;" name="isMultiLevel" value="1"  id="isMultiLevel" lay-skin="switch" lay-text="是|否" checked>
+                </td>
+                <td class="label-title ">是否可以修改:</td>
+                <td class="label-content switchinput">
+                    <input type="checkbox" name="canModify" value="1"  id="canModify" lay-skin="switch" lay-text="是|否" checked>
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td class="label-title">描述:</td>
+                <td class="label-content" colspan="3">
+                    <textarea name="description" id="description" placeholder="描述" class="layui-textarea"></textarea>
+                </td>
+                </td>
+            </tr>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/config_dict_category_add.js"></script>
+</body>
+</html>

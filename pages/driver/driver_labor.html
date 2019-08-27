@@ -1,0 +1,86 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}司机劳务公司管理{% endblock %}
+{% block header %}
+<style type="text/css">
+  .layui-form-label{
+    width: 105px;
+  }
+  .layui-input-block{
+    margin-left: 135px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">公司账户名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入公司账户名称" autocomplete="off" class="layui-input" name='accountName' id="accountName">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">公司名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入公司名称" autocomplete="off" class="layui-input" name='chineseName' id="chineseName">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">城市：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="city" name="city">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">联系人：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入联系人" autocomplete="off" class="layui-input" name='contacts' id='contacts'>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">联系人手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入联系人手机号" autocomplete="off" class="layui-input" name='contactsCellphone' id='contactsCellphone'>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">合同编号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入合同编号" autocomplete="off" class="layui-input" name='licenseNo' id='licenseNo'>
+                        </div>
+                    </div>
+                    <button id="searchBt" lay-submit lay-filter="searchLabor" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                        <button class="layui-btn layui-btn-sm" id="jsVehicleBrandAdd" lay-event="add" permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe608;</i> 添加
+                        </button>
+                        <!-- <button class="layui-btn layui-btn-sm"  lay-event="delete"  permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe640;</i> 下线
+                        </button> -->
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/driver_labor.js"></script>
+{% endblock %}

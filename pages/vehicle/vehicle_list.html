@@ -1,0 +1,75 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}车辆管理{% endblock %}
+{% block header %}
+<style type="text/css">
+    .layui-form-label{
+        width: 85px;
+    }
+    .layui-input-block{
+        margin-left: 115px;
+    }
+    .layui-input{padding-right:30px; }
+    .form-btnField{margin-left: 20px;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<form class="layui-form" onsubmit="return false">
+    <div class="layui-row">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">车牌号:</label>
+                <div class="layui-input-block">
+                    <input id="carNumber" name="carNumber" type="text" class="layui-input" placeholder="车牌号">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">品牌选择:</label>
+                <div class="layui-input-block">
+                    <select class="form-control input-sm" lay-filter="carBrandId" lay-verify="carBrandId" id="carBrandId" name="carBrandId">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">车系选择:</label>
+                <div class="layui-input-block">
+                    <select class="form-control input-sm" lay-filter="carModelId" lay-verify="carModelId" id="carModelId" name="carModelId">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">属性选择:</label>
+                <div class="layui-input-block">
+                    <select class="form-control input-sm" id="carAttributeId"  lay-filter="carAttributeId" lay-verify="carAttributeId" name="carAttributeId">
+
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+
+            </div>
+
+        </div>
+    </div>
+</form>
+<div class="widget-body no-padding">
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm"  lay-event="add" permission="sys:vehicle:add">
+                <i class="layui-icon">&#xe608;</i> 添加
+            </button>
+
+        </div>
+    </script>
+    <table id="demo" lay-filter="test"></table>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/vehicle_list.js"></script>
+{% endblock %}
+

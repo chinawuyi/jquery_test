@@ -1,0 +1,49 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}司机列表{% endblock %}
+{% block header %}
+<style type="text/css">
+  .layui-form-label{
+    width: 85px;
+  }
+  .layui-input-block{
+    margin-left: 115px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+  .layui-rate{padding: 0;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                        <button class="layui-btn layui-btn-sm" id="jsVehicleBrandAdd" lay-event="add" permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe608;</i> 添加
+                        </button>
+                        <!-- <button class="layui-btn layui-btn-sm"  lay-event="delete"  permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe640;</i> 下线
+                        </button> -->
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/driver_train.js"></script>
+{% endblock %}

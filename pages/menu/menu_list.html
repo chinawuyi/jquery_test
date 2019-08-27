@@ -1,0 +1,87 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}菜单{% endblock %}
+{% block header %}
+<style type="text/css">
+  body{margin: 0 10px;}
+</style>
+{% endblock %}
+
+{% block content %}
+<header style="height: 100%">
+  <div align="left">
+    <table style="width: 100%">
+      <tr>
+        <td></td>
+        <td align="right">
+          <button class="layui-btn layui-btn-sm hide menuadd" permission="sys:menu:add"><i class="layui-icon">&#xe608;</i> 添加</button>
+        </td>
+      </tr> 
+    </table>
+  </div>
+</header>
+<table class="layui-table layui-form" id="menulist"></table>
+<script type="text/text" id="addLayer">
+<form class="layui-form" action="" lay-filter="addmenu" id="addmenu">
+  <div class="layui-form-item">
+    <label class="layui-form-label">上级菜单</label>
+    <div class="layui-input-inline">
+      <select name="parentId" lay-verify="required" class="parentId">
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">名称</label>
+    <div class="layui-input-inline">
+      <input type="text" name="name" lay-verify="required" autocomplete="off" class="layui-input name">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">样式</label>
+    <div class="layui-input-inline">
+      <button class="layui-btn css-btn">选择</button>
+      <input type="hidden" name="css" autocomplete="off" class="layui-input css">
+      <i id="cssImg" class="fa"></i>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">链接</label>
+    <div class="layui-input-inline">
+      <input type="text" name="href" autocomplete="off" class="layui-input href">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">类型</label>
+    <div class="layui-input-inline">
+      <select name="type" lay-verify="required" class="type">
+        <option value="1">菜单</option>
+        <option value="2">按钮</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">权限</label>
+    <div class="layui-input-inline">
+      <input type="text" name="permission" autocomplete="off" class="layui-input permission">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-inline">
+      <input type="text" name="sort" autocomplete="off" class="layui-input sort">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+      <button class="layui-btn" lay-submit lay-filter="save">提交</button>
+    </div>
+  </div>
+</form>
+</script>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/libs/jquery.treetable.js"></script>
+<script type="text/javascript" src="/js/pages/menu_list.js"></script>
+{% endblock %}

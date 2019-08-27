@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>头像预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">头像上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='headImg' lay-verify="required" value="" style="display:none;"/>
+                        <input class="real_file_btn" type="file" id="headImg" accept="" name="headImg"/>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">司机照片预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">司机照片上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='driverImg'  value="" style="display:none;"/>
+                        <input class="real_file_btn" type="file" id="driverImg" accept="" name="driverImg" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">身份证正面预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">身份证正面上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='idCardImgFront' value="" style="display:none;"/>
+                        <input class="real_file_btn" type="file" id="idCardImgFront" accept="" name="idCardImgFront" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">身份证反面预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">身份证反面上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='idCardImgBack' value="" style="display:none;"/>
+                        <input class="real_file_btn" type="file" id="idCardImgBack" accept="" name="idCardImgBack" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">身份证手持照片预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">身份证手持照片上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='idCardImgHold' value="" style="display:none;"/>
+                        <input class="real_file_btn" type="file" id="idCardImgHold" accept="" name="idCardImgHold" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>驾照扫描件预览:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">驾照扫描件上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input type='text' class='licenseImg' value="" style="display:none;" lay-verify="required"/>
+                        <input class="real_file_btn" type="file" id="licenseImg" accept="" name="licenseImg" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>身份证号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入身份证号" type="text" id="idCardNumber" name="idCardNumber" lay-verify="required|identity">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>出生年月日:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择出生年月日" type="text" id="birthDate" name="birthDate" lay-verify="required">
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="label-title">司机类型:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="driverType" name="driverType" value="">
+                    </select>
+                </td>
+                <td class="label-title">邮箱:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入邮箱" type="email" id="email" name="email">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>用户名:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入用户名" type="text" id="loginName" name="loginName" lay-verify="required|driverNameCheck">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>姓名:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入姓名" type="text" id="name" name="name" lay-verify="required|driverNameCheck">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>手机号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入手机号" type="text" id="phone" name="phone" lay-verify="required|phone">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>性别:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="gender" name="gender" value="" lay-verify="required">
+                        <option value="">请选择</option>
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>所属城市:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="city" name="city" value="" lay-verify="required">
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>驾照有效截止期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择驾照有效期" type="text" id="licenseEndDate" name="licenseEndDate" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">公司编号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择公司编号" type="text" id="rentCompanyId" name="rentCompanyId" readonly>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>驾照号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入驾照号" type="text" id="licenseNumber" name="licenseNumber" lay-verify="required|licenseNumberCheck">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">司机听单车型:</td>
+                <td class="label-content" style='text-align: left;' id='CarTypes'>
+                    
+                </td> 
+                <td class="label-title"><span class="required-icon">*</span>网约车驾驶证编号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入网约车驾驶证编号" type="text" id="driverCertNo" name="driverCertNo" lay-verify="required|driverCertNoCheck">
+                </td>              
+            </tr>
+            <tr>
+                <td class="label-title">国籍:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请填写国籍" type="text" id="nationality" name="nationality">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>民族:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入民族" type="text" id="nation" name="nation" lay-verify="required|driverNameCheck">
+                </td>              
+            </tr>
+            <tr id="">
+                <td class="label-title"><span class="required-icon">*</span>准驾类型:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入准驾类型" type="text" id="licenseType" name="licenseType" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>驾照有效起始期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择驾照有效起始期" type="text" id="licenseStartDate" name="licenseStartDate" lay-verify="required">
+                </td>               
+            </tr>
+            <tr id="bindCarCont">
+                <td class="label-title">司机车辆:</td>
+                <td class="label-content" colspan='3' style='text-align: left;' id='carId'>
+                    <button class="layui-btn layui-btn-sm" id="bindCar">分配</button>
+                    <div class='' id="unBindCar" style='display: none;'><span style="display: inline-block;padding-right: 20px;"></span><button class="layui-btn layui-btn-sm">收车</button></div>              
+                </td>               
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">下一步</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/driver_add.js"></script>
+</body>
+</html>

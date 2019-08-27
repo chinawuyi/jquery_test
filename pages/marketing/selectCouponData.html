@@ -1,0 +1,184 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}司机列表{% endblock %}
+{% block header %}
+
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">已选：</label>
+                        <div class="layui-input-block">
+                            <textarea type="text" autocomplete="off" placeholder="暂无" class="layui-textarea" id="selectData" readonly></textarea>
+                        </div>
+                    </div>
+                    <button id="searchBt" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i>确定</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+    layui.use(['common','table', 'dict', 'permission'], function() {
+        var table = layui.table;
+        var common = layui.common;
+        var pageData=[];
+        var form=layui.form;
+        layui.sessionData('checked', null);
+        var cityUrl="/management/v1/businesscity/list";//城市接口地址
+        var carUrl="/management/v1/cartype/list";//车型接口地址
+        var cityCol=[
+                {checkbox: true},
+                {field: 'cityId', title: '城市ID',sort: false,align: 'right'},
+                {field: 'name', title: '城市名称',sort: false,align: 'right'},
+                {field: 'code', title: '城市编码',sort: false,align: 'right'}
+            ];
+        var carCol=[
+                {checkbox: true},
+                {field: 'carTypeId', title: '车型ID',sort: false,align: 'right'},
+                {field: 'name', title: '车型名称',sort: false,align: 'right'},
+                {field: 'enName', title: '英文名称',sort: false,align: 'right'}
+            ];
+        var selectCouponData={
+            selectType:$.getUrlData().type,
+            checkboxName:[],
+            eventFun:{
+                getCityData:function(colData,interfaceUrl){
+                    this.tableObj = table.render({
+                    elem: '#demo',
+                    height: 400,
+                    url: interfaceUrl,
+                    method:'post',
+                    contentType:"application/json",
+                    page: true,
+                    where:{
+                        //type:'2',
+                        status:'1'
+                    },
+                    request: {
+                        pageName: 'pageIndex',
+                        limitName: 'pageSize'
+                    },
+                    parseData: function(res)
+                    {
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.message, //解析提示文本
+                            "count": res.content.total, //解析数据长度
+                            "data": res.content.data //解析数据列表
+                        };
+                    },
+                    cols: [colData],
+                    done: function(res, page, count){
+                        var tbl = $('#demo').next('.layui-table-view');
+                        var mySelected=[]
+                        pageData = res.data;
+                        var len = pageData.length;
+                        for (var i = 0; i < len; i++) {
+                            if (layui.sessionData('checked', pageData[i]['code']||pageData[i]['carTypeId'])) {
+                                mySelected.push(pageData[i]['name']);
+                                tbl.find('table>tbody>tr').eq(i).find('td').eq(0).find('input[type=checkbox]').prop('checked', true);
+                            }
+                        }
+                        $('#selectData').val(mySelected.join(','))
+                        form.render('checkbox');                     
+                    },
+                    toolbar: '#toolbarDemo',
+                    });
+                },
+                getCarTypeData:function(){
+
+                },
+                /*复选框选中*/
+                setChecked:function(){
+                    table.on('checkbox(test)', function(obj){
+                        var data = obj.type == 'one' ? [obj.data] : pageData;
+                        $.each(data, function(k, v) {
+                            if (obj.checked) {
+                                layui.sessionData('checked', {
+                                    key: v.code||v.carTypeId, value: v.name
+                                });
+                            } else {
+                                layui.sessionData('checked', {
+                                    key: v.code||v.carTypeId, remove: true
+                                });
+                            }
+                        });
+                        var mySelected=[]
+                        $.each(layui.sessionData('checked'), function(k, v) {
+                            mySelected.push(v);
+                        });
+                        $('#selectData').val(mySelected.join(','))
+                    });
+                },
+            }, 
+            defaultEvent:function(){
+                $('#searchBt').click(function(){
+                    var mySelected=[]
+                    if(selectCouponData.selectType!='cityList'){
+                        layui.sessionData('checkedCarType',null)
+                        $.each(layui.sessionData('checked'), function(k, v) {
+                            mySelected.push(k);
+                            layui.sessionData('checkedCarType',{
+                                key: k, value: v
+                            })
+                        });
+                        
+                        parent.window.$('#carTypeIdList').val(mySelected);
+                    }else{
+                        layui.sessionData('checkedCity',null)
+                        $.each(layui.sessionData('checked'), function(k, v) {
+                            mySelected.push(k);
+                            layui.sessionData('checkedCity',{
+                                key: k, value: v
+                            })
+                        });
+                        
+                        parent.window.$('#cityList').val(mySelected);
+                    }
+                    //关闭层
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                })
+            }           
+        }
+        $('#selectData').val()
+        //判断是选城市还是选车
+        selectCouponData.selectType=='cityList'?selectCouponData.eventFun.getCityData(cityCol,cityUrl):selectCouponData.eventFun.getCityData(carCol,carUrl);
+        selectCouponData.eventFun.setChecked();
+        if(selectCouponData.selectType=='cityList'){
+            $.each(layui.sessionData('checkedCity'), function(k, v) {
+                layui.sessionData('checked',{
+                    key: k, value: v
+                })
+            });
+        }else{
+            $.each(layui.sessionData('checkedCarType'), function(k, v) {
+                layui.sessionData('checked',{
+                    key: k, value: v
+                })
+            });
+        }
+        
+        selectCouponData.defaultEvent();
+    })
+</script>
+{% endblock %}

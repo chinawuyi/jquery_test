@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title">车身预览:</td>
+                <td class="label-content" id="imgcon"></td>
+                <td class="label-title">图片上传（支持多图5）:</td>
+                <td class="label-content" id="carImgsBtn">
+                    <button type="button" class="layui-btn my_file_btn" id="test1">
+                        <i class="layui-icon">&#xe67c;</i>图片上传
+                        <input class="real_file_btn" multiple="multiple" type="file" id="carImgs" accept="" name="file" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">行驶证:</td>
+                <td class="label-content" id="carLicenseImgCon"></td>
+                <td class="label-title">图片上传:</td>
+                <td class="label-content" id="carLicenseImgBtn">
+                    <button type="button" class="layui-btn my_file_btn" id="test2">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input class="real_file_btn"  type="file" id="carLicenseImg" accept="" name="file" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">车牌号:</td>
+                <td class="label-content" id="carNumberImgCon"></td>
+                <td class="label-title">图片上传:</td>
+                <td class="label-content" id="carNumberImgBtn">
+                    <button type="button" class="layui-btn my_file_btn" id="test3">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input class="real_file_btn"  type="file" id="carNumberImg" accept="" name="file" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车牌号:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车牌号"  lay-verify="required|carPlateRule" type="text" id="carNumber"  name="carNumber">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>发动机号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="发动机号"  lay-verify="required" type="text" id="engineNumber"  name="engineNumber">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>城市:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="city"  lay-filter="city" lay-verify="required" name="city">
+
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>车辆识别VIN码:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车辆识别VIN码" lay-verify="required|vinRule" type="text" id="carVerifyCode" name="carVerifyCode">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>油耗:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="油耗"  lay-verify="required|oilRule" type="text"  id="oilWear" name="oilWear">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>品牌选择:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" lay-filter="carBrandId" lay-verify="required" id="carBrandId" name="carBrandId">
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车系:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm"  id="carModelId" lay-filter="carModelId" lay-verify="required" name="carModelId">
+
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>属性:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="carAttributeId"  lay-filter="carAttributeId" lay-verify="required" name="carAttributeId">
+
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>租赁公司:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="租赁公司" readonly="readonly"  lay-verify="required" type="text" id="rentCompanyId"  name="rentCompanyId" data-val="text">
+                    <!-- <select class="form-control input-sm" id="carAttributeId"  lay-filter="rentCompanyId" lay-verify="required" name="rentCompanyId">
+
+                    </select> -->
+
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>变速箱:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="变速箱"  lay-verify="required" type="text" id="variableBox"  name="variableBox">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>网络预约出租汽车运输证号:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="网络预约出租汽车运输证号"  lay-verify="required" type="text" id="carCertNo"  name="carCertNo">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>车牌颜色</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="plateColor"  lay-filter="plateColor" lay-verify="required" name="plateColor">
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆行驶总里程数(公里):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆行驶总里程数(公里)"  lay-verify="required|totalMileageRule" type="text" id="totalMileage"  name="totalMileage">
+                </td>
+                <td class="label-title">司机ID</td>
+                <td class="label-content" id="driverId" style="text-align:left;">
+                   
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/vehicle_add.js"></script>
+</body>
+</html>

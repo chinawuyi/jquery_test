@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>登录</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/css/global.css" media="all"/>
+    <link rel="stylesheet" href="/css/lib/font-awesome/css/font-awesome.css" media="all"/>
+    <style type="text/css">
+        .hide {
+            display: none !important;
+        }
+        .imgCode:before {content:""; position:absolute; width:0; height:0; border-left:10px solid transparent; border-right:10px solid transparent; border-bottom:10px solid #ccc; top:-10px; left:58px}
+        .imgCode:after {content:""; position:absolute; width:0; height:0; border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:9px solid #fff; top:-8px; left:59px}
+    </style>
+
+    <link href="css/pages/login.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="login">
+    <div class="message">如祺出行</div>
+    <div id="darkbannerwrap"></div>
+
+    <form id="login-form" method="post" onsubmit="return false;">
+        <input id="username" name="username" placeholder="用户名" type="text"
+               autocomplete="off">
+        <hr class="hr15">
+        <input id="password" name="password" placeholder="密码" type="password"
+               autocomplete="off">
+        <hr class="hr15">
+        <div style="position:relative;">当前身份已开启登录保护，请输入<a href="javascript:;" id="jsWechatCode">动态安全码</a>
+        <div class="imgCode" id="jsWechatImg" style="border:1px solid #ccc;width:135px; height:135px;position:absolute; left:165px; top:30px; background:#fff; display: none;"><img src="img/login/wechat.png" style="width:100%; height:auto; padding:10px"></div></div>
+        <hr class="hr15">
+        
+        <input id="token" name="token" placeholder="6位动态安全码" type="text"
+               autocomplete="off">
+        <hr class="hr15">
+        <button style="width: 100%;" type="submit" class="btn-login">登录</button>
+        <hr class="hr20">
+        <span id="info" style="color: red"></span>
+    </form>
+</div>
+
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    }).extend({
+        treetable: '../plugin/layui/treetable'
+    })
+    layui.use(['common', 'permission'], function () {
+        var permission = layui.permission
+        permission.checkDom()
+
+        $.subscribe('permission:check', function (e, payload) {
+            permission.checkDom(payload)
+        })
+    })
+</script>
+
+<script type="text/javascript" src="js/pages/login.js"></script>
+
+</body>
+</html>

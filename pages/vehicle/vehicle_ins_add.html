@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>保险公司名称:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="保险公司名称"  lay-verify="required" type="text" id="insur_com"  name="insur_com">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>保险号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="保险号"  lay-verify="required|insCodeRule" type="text" id="insur_num"  name="insur_num">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">第三者责任险保额(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="第三者责任险保额(元)"  lay-verify="moneyRule" type="text" id="liability_other_sum"  name="liability_other_sum">
+                </td>
+                <td class="label-title">第三者责任险保费(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="第三者责任险保费(元)"  lay-verify="moneyRule" type="text" id="liability_other_money"  name="liability_other_money">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">车辆偷盗保额(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆偷盗保额(元)"  lay-verify="moneyRule" type="text" id="stolen_sum"  name="stolen_sum">
+                </td>
+                <td class="label-title">车辆偷盗保费(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车辆偷盗保费(元)"  lay-verify="moneyRule" type="text" id="stolen_money"  name="stolen_money">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">车辆人员责任保额(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆人员责任保额(元)"  lay-verify="moneyRule" type="text" id="people_liability_sum"  name="people_liability_sum">
+                </td>
+                <td class="label-title">车辆人员责任保费(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车辆人员责任保费(元)"  lay-verify="moneyRule" type="text" id="people_liability_money"  name="people_liability_money">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">玻璃单独破碎险(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="玻璃单独破碎险(元)"  lay-verify="moneyRule" type="text" id="broken_glass"  name="broken_glass">
+                </td>
+                <td class="label-title">划痕2000险(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="划痕2000险(元)"  lay-verify="moneyRule" type="text" id="scratch_risk"  name="scratch_risk">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">涉水险(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="涉水险(元)"  lay-verify="moneyRule" type="text" id="wading"  name="wading">
+                </td>
+                <td class="label-title">倒车镜保险(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="倒车镜保险(元)"  lay-verify="moneyRule" type="text" id="rearview"  name="rearview">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">附件不计免赔(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="附件不计免赔(元)"  lay-verify="moneyRule" type="text" id="additional_excluding_deductible"  name="additional_excluding_deductible">
+                </td>
+                <td class="label-title">不计免赔(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="不计免赔(元)"  lay-verify="moneyRule" type="text" id="excluding_deductible"  name="excluding_deductible">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">折扣(单位万分之一):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="折扣(单位万分之一)"  lay-verify="moneyRule" type="text" id="discount"  name="discount">
+                </td>
+                <td class="label-title">交强险(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="交强险(元)"  lay-verify="moneyRule" type="text" id="risk_of_delivery"  name="risk_of_delivery">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">车船使用税(元):</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车船使用税(元)"  lay-verify="moneyRule" type="text" id="transport_royalities"  name="transport_royalities">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>保险生效时间:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="保险生效时间"  lay-verify="required" type="text" readonly="readonly" id="start_time"  name="start_time">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>保险到期时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="保险到期时间"  lay-verify="required" type="text" readonly="readonly" id="end_time"  name="end_time">
+                </td>
+                <td class="label-title"></td>
+                <td class="label-content" ></td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/vehicle_ins_add.js"></script>
+</body>
+</html>

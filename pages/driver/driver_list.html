@@ -1,0 +1,112 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}司机列表{% endblock %}
+{% block header %}
+<style type="text/css">
+  .layui-form-label{
+    width: 85px;
+  }
+  .layui-input-block{
+    margin-left: 115px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+  .layui-rate{padding: 0;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">司机姓名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入司机姓名" autocomplete="off" class="layui-input" name='name' id="name">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">司机手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入司机手机号" autocomplete="off" class="layui-input" name='phone' id='phone'>
+                        </div>
+                    </div>
+
+                    <!-- <div class="layui-inline">
+                        <label class="layui-form-label">司管姓名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入司管姓名" autocomplete="off" class="layui-input" name='manageName' id="manageName">
+                        </div>
+                    </div> -->
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">性别：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="gender" name="gender">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">司机星级：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="driverStar" name="driverStar">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">司机类型：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="driverType" name="driverType">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">工作城市：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="city" name="city">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="layui-inline">
+                        <label class="layui-form-label">司机状态：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="status" name="status">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button id="searchBt" lay-submit lay-filter="driverSearch" class="layui-btn layui-btn-sm" permission="sys:driver:querylist"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                        <!-- <button class="layui-btn layui-btn-sm" id="jsVehicleBrandAdd" lay-event="add" permission="sys:driver:add">
+                            <i class="layui-icon">&#xe608;</i> 添加
+                        </button> -->
+                        <!-- <button class="layui-btn layui-btn-sm"  lay-event="delete"  permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe640;</i> 下线
+                        </button> -->
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/driver_list.js"></script>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}调度任务管理{% endblock %}
+{% block header %}
+<style type="text/css">
+  .layui-form-label{
+    width: 100px;
+  }
+  .layui-input-block{
+    margin-left: 130px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+  .layui-rate{padding: 0;}
+  .layui-input.sm {padding-right:0; width:103px; display: inline-block;}
+  .hide-btn{display:none;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+         <!-- <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">设备名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入设备名称" autocomplete="off" class="layui-input" name='deviceId' id="deviceId">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">型号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入型号" autocomplete="off" class="layui-input" name='phone' id='phone'>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">当前登录账号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入当前登录账号" autocomplete="off" class="layui-input" name='manageName' id="manageName">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">处理人：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入处理人" autocomplete="off" class="layui-input" name='manageName' id="manageName">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">处理时间：</label>
+                        <div class="layui-input-block">
+                            <input class="layui-input sm" placeholder="开始时间"  readonly="readonly" lay-verify="required" type="text" id="beginTime"  name="beginTime">
+                            <span>-</span>
+                            <input class="layui-input sm" placeholder="结束时间"  readonly="readonly" lay-verify="required" type="text" id="endTime"  name="endTime">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="driverType" name="driverType">
+                                <option value="">不限</option>
+                                <option value="">拉黑</option>
+                                <option value="">解除拉黑</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="searchBt" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </form>
+        </header> -->
+        <div class="widget-body no-padding">
+            <script type="text/html" id="toolbarDemo">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-sm" id="jsVehicleBrandAdd" lay-event="add" permission="sys:vehicle:add">
+                        <i class="layui-icon">&#xe608;</i> 添加
+                    </button>
+                    <button id="searchBt" class="hide-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </script>
+            <table id="demo" lay-filter="test"></table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/dispatcher_task.js"></script>
+{% endblock %}
+

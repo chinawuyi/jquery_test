@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+<style type="text/css">
+  .layui-form-label{width: 105px;}
+  .layui-input-block{margin-left: 135px;}
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+</style>
+</head>
+<body>
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item" style='padding-top:10px;'>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">半径(单位:米)：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入搜索半径" autocomplete="off" class="layui-input" name='manualRadius' id="manualRadius" lay-verify="manualRadiusCheck">
+                        </div>
+                    </div>
+                    <button id="searchBt" class="layui-btn layui-btn-sm" lay-submit lay-filter="*" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>                   
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/order_assign.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}优惠劵模板{% endblock %}
+{% block header %}
+<style type="text/css">
+    .layui-form-label{
+      width: 85px;
+    }
+    .layui-input-block{
+      margin-left: 115px;
+    }
+    .layui-input{padding-right:30px; }
+    .form-btnField{margin-left: 20px;}
+  </style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">批次号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入批次号" autocomplete="off" class="layui-input" name='couponBatchId' id="couponBatchId">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">发放时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请选择" autocomplete="off" class="layui-input" name='time' id="time">
+                        </div>
+                    </div>
+                    <button id="searchBt" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/coupon_batch.js"></script>
+{% endblock %}

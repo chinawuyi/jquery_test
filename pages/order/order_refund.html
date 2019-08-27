@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title">创建人:</td>
+                <td class="label-content">
+					<input class="form-control" placeholder="请输入昵称" type="text" id="operator" name="operator" disabled>
+                </td>
+                <td class="label-title">创建时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入手机号" type="text" id="timestamp" name="timestamp" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>退款金额(元):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入退款金额" type="text" id="refundAmount" name="refundAmount" lay-verify="required|amountCheck|number">
+                </td>
+                <td class="label-title">已支付金额(元)</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入退款金额" type="text" id="payDoneAmount" name="payDoneAmount" disabled/>
+                </td>
+            </tr>   
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>退款原因:</td>
+                <td class="label-content" colspan="3">
+                    <textarea class="form-control layui-textarea" placeholder="请输入退款原因" id="comment" name="comment" lay-verify="required"></textarea>
+                </td>
+            </tr>       
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">取消</button>
+                        <button class="layui-btn" lay-submit lay-filter="first" id="jsSub">提交</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <script type="text/text" id="addLayer">
+        <form class="layui-form layui-form-pane1"  lay-filter="refundCoupon" onsubmit="return false">
+            <table class="layui-table">
+                <tbody>
+                <tr>
+                    <td class="label-title">券编号:</td>
+                    <td class="label-content">
+                        <input class="form-control" placeholder="" type="text" id="couponId" name="couponId" disabled>
+                    </td>
+                    <td class="label-title">是否退券:</td>
+                    <td class="label-content">
+                        <select class="form-control input-sm" id="ifRefundCouponId" name="" value="" lay-verify="required">
+                            <option value='0'>否</option>
+                            <option value='1'>是</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-title">是否部分退款:</td>
+                    <td class="label-content">
+                        <select class="form-control input-sm" id="partialStatus" name="partialStatus" value="" lay-verify="required" disabled>
+                            <option value='0'>否</option>
+                            <option value='1'>是</option>
+                        </select>
+                    </td>
+                    <td class="label-title"></td>
+                    <td class="label-content">
+                    </td>
+                </tr>    
+                </tbody>
+            </table>
+            <fieldset>
+                <div class="form-actions">
+                    <div class="row" align="center">
+                        <div class="col-md-12">
+                            <button class="layui-btn" lay-submit lay-filter="refundCoupon" id="">退券</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </script>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+    layui.use(['common','layer','form'], function() {
+        var form=layui.form;
+        var partialStatus=1;//是部分退款
+        /**初始值*/
+        $("#operator").val(sessionStorage.getItem('operator'))
+        $('#timestamp').val(new Date().Format('yyyy-MM-dd hh:mm:ss'))
+        $('#payDoneAmount').val(Number($.getUrlData().payDoneAmount).toFixed(2))
+        //验证
+        form.verify({
+            amountCheck: function(value, item){ 
+                if(value>($.getUrlData().payDoneAmount+0.01)){
+                    return '退款金额不能大于订单金额';
+                }
+            },
+        });
+        //关闭弹窗
+        $('#jsBrandBack').click(function(){
+            var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+        })
+        //提交申请
+        form.on('submit(first)', function(data){
+            if(Number($.getUrlData().payDoneAmount)==Number(data.field.refundAmount)){//全额退款
+                partialStatus=0//不是部分退款
+            }
+            $.postApi('/management/v1/orderinfo/refund',{
+                    "orderId":$.getUrlData().orderId,
+                    'comment':data.field.comment,
+                    'operator':sessionStorage.getItem('operator'),
+                    'refundAmount':data.field.refundAmount,
+                    'timestamp':new Date(data.field.timestamp)/1000
+
+                },function(res)
+                {
+                    if(res.code == 0)
+                    {
+                        layer.msg(res.message);
+                        if(res.content){
+                            //是否退券
+                            layer.open({
+                                    type: 1,
+                                    title: '退券确认',
+                                    content: $('#addLayer').html(),
+                                    area: ['500px', '200px']
+                                })
+                            $('#partialStatus').val(partialStatus)
+                            $('#couponId').val(res.content.couponId)
+                            form.render('select');
+                        }else{
+                            window.setTimeout(function(){
+                                var index = parent.layer.getFrameIndex(window.name);
+                                parent.layer.close(index);
+                                parent.window.location.reload();
+                            },1000);
+                        }
+                        
+                    }
+                }
+            )
+
+            return false;
+        });
+        //去退券
+        form.on('submit(refundCoupon)', function(data){
+            if($('#ifRefundCouponId')=='0'){//不退
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+                parent.window.location.reload();
+              
+            }
+            $.postApi('/management/v1/orderinfo/refundCoupon',{
+                "orderId":$.getUrlData().orderId,
+                "partialStatus": $('#partialStatus').val()
+                },function(res)
+                {
+                    if(res.code == 0)
+                    {
+                        window.setTimeout(function(){
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            parent.window.location.reload();
+                        },1000);
+                        
+                    }
+                }
+            )
+
+            return false;
+        })
+    })
+</script>
+
+</body>
+</html>

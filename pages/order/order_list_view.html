@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+    <style>
+    .labelInput{border: none;background: none;}
+    .layui-tab-title li.finishedOrder,.layui-tab-title li.cancellation{display: none;}
+    </style>
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+          <li class="layui-this">订单信息</li>
+          <li permission="sys:order:cancel" class='cancellation'>取消订单</li>
+          <li permission="sys:order:finish" class='finishedOrder'>结束订单</li>
+        </ul>
+        <div class="layui-tab-content" style="min-height: 300px;">
+          <div class="layui-tab-item layui-show">
+              <table class="layui-table showOrder">
+                  <tbody>
+                  <tr>
+                    <td class="label-title">订单ID</td>
+                    <td class="label-content">
+                      <input value="" name="orderId" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">分配的车型</td> 
+                    <td class="label-content">
+                      <input value="" name="carTypeId" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">下单平台 </td>
+                    <td class="label-content">
+                      <input value="" name="platform" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">订单状态</td>
+                    <td class="label-content">
+                      <input value="" name="status" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">用户电话 </td>
+                    <td class="label-content">
+                      <input value="" name="userPhone" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">分配的车辆</td>
+                    <td class="label-content">
+                      <input value="" name="carId" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">司机手机号码 </td>
+                    <td class="label-content">
+                      <input value="" name="driverPhone" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">分配司机名称</td>
+                    <td class="label-content">
+                      <input value="" name="driverName" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">订单创建时间 </td>
+                    <td class="label-content">
+                      <input value="" name="timeInit" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title timeEnd" >订单实际结束的时间</td>
+                    <td class="label-title cancelOrder" style='display:none'>订单取消时间</td>
+                    <td class="label-content">
+                      <input value="" name="timeEnd" disabled class='labelInput' />
+                      <input value="" name="timeCancel" disabled class='labelInput' style='display:none'/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">订单出发地 </td>
+                    <td class="label-content">
+                      <input value="" name="startCity" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">订单到达地</td>
+                    <td class="label-content">
+                      <input value="" name="endCity" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">订单取消原因 </td>
+                    <td class="label-content">
+                      <input value="" name="cancelReasonId" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">订单取消发起者</td>
+                    <td class="label-content">
+                      <input value="" name="cancelSource" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">支付渠道 </td>
+                    <td class="label-content">
+                      <input value="" name="payChannel" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">订单的总金额</td>
+                    <td class="label-content">
+                      <input value="" name="chargeTotalAmount" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">计费实际使用时长 </td>
+                    <td class="label-content">
+                      <input value="" name="chargeTimeLength" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">计费实际使用距离</td>
+                    <td class="label-content">
+                      <input value="" name="chargeDistance" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="label-title">产品类型 </td>
+                    <td class="label-content">
+                      <input value="" name="productTypeId" disabled class='labelInput' />
+                    </td>
+                    <td class="label-title">退款状态 </td>
+                    <td class="label-content">
+                      <input value="" name="statusRefund" disabled class='labelInput' />
+                    </td>
+                  </tr>
+                  <tr>
+                      <td class="label-title">退款原因 </td>
+                      <td class="label-content">
+                        <input value="" name="comment" disabled class='labelInput'/>
+                      </td>
+                      <td class="label-title">退款创建人 </td>
+                      <td class="label-content">
+                        <input value="" name="operator" disabled class='labelInput'/>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td class="label-title">申请退款时间 </td>
+                        <td class="label-content">
+                          <input value="" name="timeRefund" disabled class='labelInput'/>
+                        </td>
+                        <td class="label-title">退款金额 </td>
+                        <td class="label-content">
+                          <input value="" name="refundAmount" disabled class='labelInput'/>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td class="label-title">是否用券 </td>
+                          <td class="label-content">
+                            <input value="" name="ifcouponId" disabled class='labelInput'/>
+                          </td>
+                          <td class="label-title">券编号 </td>
+                          <td class="label-content">
+                            <input value="" name="couponId" disabled class='labelInput'/>
+                          </td>
+                        </tr>
+                  </tbody>
+              </table>
+              <div class="row" align="center">
+                <div class="col-md-12">                              
+                    <button class="layui-btn" id="refund" style='display: none;' permission="sys:order:refund">退款</button>
+                </div>
+              </div>
+              
+          </div>
+          <div permission="sys:order:cancel" class="layui-tab-item" class='cancellation'>
+              <form class="layui-form layui-form-pane1" lay-filter="cancelOrder" onsubmit="return false">
+                  <table class="layui-table">
+                    <tbody>
+                        <tr class=''>
+                            <td class="label-title"><span class="required-icon">*</span>取消发起人 </td>
+                            <td class="label-content">
+                              <select class="form-control input-sm" id="cancelSource1" name="cancelSource1" lay-verify="required">
+                              </select>
+                            </td>
+                        </tr>
+                        <tr class=''>
+                            <td class="label-title"><span class="required-icon">*</span>取消原因 </td>
+                            <td class="label-content" colspan="3">
+                                <textarea class="form-control layui-textarea" placeholder="请输入原因" id="otherReason" name="otherReason" lay-verify="required"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>        
+                <fieldset>
+                    <div class="form-actions">
+                        <div class="row" align="center">
+                            <div class="col-md-12">                              
+                              <button class="layui-btn" lay-submit lay-filter="cancelOrder" id="cancelOrder">保存</button>
+                            </div>
+                        </div>
+                    </div>
+        
+                </fieldset>
+                
+              </form>
+          </div>
+          <div permission="sys:order:finish" class="layui-tab-item" class='finishedOrder'>
+              <form class="layui-form layui-form-pane1" lay-filter="finishedOrder" onsubmit="return false">
+                  <table class="layui-table">
+                    <tbody>
+                        <tr class=''>
+                            <td class="label-title"><span class="required-icon">*</span>终止发起人 </td>
+                            <td class="label-content" colspan="3">
+                              <select class="form-control input-sm" id="cancelSource2" name="cancelSource2" lay-verify="required">
+                              </select>
+                            </td>
+                        </tr>
+                        <tr class=''>
+                            <td class="label-title"><span class="required-icon">*</span>终止原因 </td>
+                            <td class="label-content" colspan="3">
+                                <textarea class="form-control layui-textarea" placeholder="请输入原因" id="otherReason" name="otherReason" lay-verify="required"></textarea>
+                            </td>
+                        </tr>
+                        <tr class=''>
+                            <td class="label-title">操作人 </td>
+                            <td class="label-content">
+                                <input value="" name="" disabled class='labelInput'/>
+                            </td>
+                            <td class="label-title">结算费用 </td>
+                            <td class="label-content">
+                                <input value="" name="" disabled class='labelInput'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>        
+                <fieldset>
+                    <div class="form-actions">
+                        <div class="row" align="center">
+                            <div class="col-md-12">                              
+                              <button class="layui-btn" lay-submit lay-filter="finishedOrder" id="finishedOrder">保存</button>
+                            </div>
+                        </div>
+                    </div>
+        
+                </fieldset>
+                
+              </form>
+          </div>
+        </div>
+      </div>
+        
+        
+      <script type="text/text" id="confirmCharge">
+        <form class="layui-form layui-form-pane1" action="" lay-filter="confirmCharge" onsubmit="return false">
+                <table class="layui-table">
+                  <tbody>
+                      <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>当前行驶时间 </td>
+                          <td class="label-content">
+                              <input value="0" name="" disabled class='labelInput' id="timeLength"/>
+                          </td>
+                      </tr>
+                      <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>当前行驶距离 </td>
+                          <td class="label-content" colspan="3">
+                              <input value="0" name="" disabled class='labelInput' id='distance'/>
+                          </td>
+                      </tr>
+                      <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>路桥费总金额 </td>
+                          <td class="label-content" colspan="3">
+                              <input value="0" name="bridgeAmount" class='inputFee' id='bridgeAmount'/>
+                          </td>
+                      </tr>
+                      <tr class=''>
+                        <td class="label-title"><span class="required-icon">*</span>停车费总金额 </td>
+                        <td class="label-content" colspan="3">
+                            <input value="0" name="parkingAmount"  class='inputFee' id='parkingAmount'/>
+                        </td>
+                    </tr>
+                    <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>高速费总金额 </td>
+                          <td class="label-content" colspan="3">
+                              <input value="0" name="highwayAmount"  class='inputFee' id='highwayAmount'/>
+                          </td>
+                      </tr>
+                      <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>小费金额 </td>
+                          <td class="label-content" colspan="3">
+                              <input value="0" name="tipAmount"  class='inputFee' id='tipAmount'/>
+                          </td>
+                      </tr>
+                      <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>其他金额 </td>
+                          <td class="label-content" colspan="3">
+                              <input value="0" name="otherAmount"  class='inputFee' id='otherAmount'/>
+                          </td>
+                      </tr>
+                      <tr class=''>
+                          <td class="label-title"><span class="required-icon">*</span>当前结算金额 </td>
+                          <td class="label-content" colspan="3">
+                              <input value="0" name="originTotalAmount" disabled class='labelInput' id='originTotalAmount'/>
+                          </td>
+                      </tr>
+                  </tbody>
+                </table>
+                <div align="center">
+                  <button class="layui-btn" lay-submit lay-filter="confirmCharge" id="">确定</button>
+                </div>
+        </form>
+        </script>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/order_list_view.js"></script>
+</body>
+</html>

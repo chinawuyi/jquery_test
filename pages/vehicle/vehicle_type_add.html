@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title">图片预览:</label></td>
+                <td class="label-content" id="jsphotoshow"></td>
+                <td class="label-title">图片上传:</td>
+                <td class="label-content" id="jsfilecon">
+                    <button type="button" class="layui-btn my_file_btn" >
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                        <input class="real_file_btn" type="file" id="photo" accept="" name="file" />
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车型编号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车型编号"  lay-verify="required|number"  id="carTypeId"  type="text"  name="carTypeId" maxlength="10">
+                </td>
+                <!-- <td class="label-title">状态</td>
+                <td class="label-content">
+                    <input type="checkbox"  name="status" value="1"  id="status" lay-skin="switch" lay-text="启用|禁用" checked>
+               </td> -->
+                <td class="label-title"><span class="required-icon">*</span>车型名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车型名称"  lay-verify="required" type="text" id="name"  name="name">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">车型名称(EN):</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车型名称(EN)" type="text" id="enName"  name="enName">
+                </td>
+                <td class="label-title">车型描述:</td>
+                <td class="label-content" colspan="3">
+                    <textarea name="description" id="description" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/vehicle_type_add.js"></script>
+</body>
+</html>

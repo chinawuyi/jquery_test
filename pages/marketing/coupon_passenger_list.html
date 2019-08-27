@@ -1,0 +1,182 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}司机劳务公司管理{% endblock %}
+{% block header %}
+<style type="text/css">
+  .layui-form-label{
+    width: 105px;
+  }
+  .layui-input-block{
+    margin-left: 135px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入手机号" autocomplete="off" class="layui-input" name='phone' id="phone">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户ID：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入用户ID" autocomplete="off" class="layui-input" name='userId' id="userId">
+                        </div>
+                    </div>
+                    <button id="searchBt" lay-submit lay-filter="searchPassegner" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i>搜索</button>
+                    <button id="submitList" lay-submit lay-filter="" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe654;</i>确定</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript">
+layui.use(['common','table', 'layer', 'dict', 'permission'], function() {
+    var common = layui.common;
+    var layer = layui.layer;
+    var dict = layui.dict;
+    var permission = layui.permission;
+    var table = layui.table;
+    var form = layui.form;
+    var pageData=[];
+    layui.sessionData('checkedPassenger', null);
+    var couponPassenger = {
+        tableObj:null,
+        checkboxData:[],
+        checkboxDataID:[],
+        eventFun:{
+            formatParams:function(object){
+                let tmpObject = {};
+                for(let o in object) {
+                    if(object[o]!='') {
+                    tmpObject[o] = object[o];
+                    }
+                }
+                return tmpObject;
+            },
+        },
+        defaultEvent:function()
+        {
+            var _this = this;
+            /*提交搜索*/
+            form.on('submit(searchPassegner)', function(data){
+                _this.tableObj.reload({
+                    where:_this.eventFun.formatParams(data.field),
+                    page: {
+                        curr: 1
+                      }
+                });
+                return false;
+            });
+            $('#submitList').click(function(){
+                var mySelected=[]
+                $.each(layui.sessionData('checkedPassenger'), function(k, v) {
+                    mySelected.push(v);
+                });
+                parent.window.setPassenger(mySelected)
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            })
+        },
+        getData:function()
+        {
+            this.tableObj = table.render({
+                elem: '#demo',
+                height: 330,
+                url: '/management/v1/passenger/list',
+                method:'post',
+                contentType:"application/json",
+                page: true,
+                request: {
+                    pageName: 'pageIndex',
+                    limitName: 'pageSize'
+                },
+
+                parseData: function(res)
+                {
+                    return {
+                        "code": res.code, //解析接口状态
+                        "msg": res.message, //解析提示文本
+                        "count": res.content.total, //解析数据长度
+                        "data": res.content.list //解析数据列表
+                    };
+                },
+                cols: [[
+                    {checkbox:true},
+                    {field: 'userId', title: 'ID',sort: false,align: 'right'},
+                    {field: 'userName', title: '姓名',sort: false,align: 'right'},
+                    {field: 'nickName', title: '昵称',sort: false,align: 'right'},
+                    {field: 'phone', title: '手机号',sort: false,align: 'right'}
+                ]],
+                toolbar: '#toolbarDemo',
+                done:function(res){
+                    var tbl = $('#demo').next('.layui-table-view');
+                    pageData = res.data;
+                    var len = pageData.length;
+                    for (var i = 0; i < len; i++) {
+                        if (layui.sessionData('checkedPassenger', pageData[i]['userId'])) {
+                            tbl.find('table>tbody>tr').eq(i).find('td').eq(0).find('input[type=checkbox]').prop('checked', true);
+                        }
+                    }
+                    form.render('checkbox');
+                }
+            });
+        },
+        toolBar:function()
+        {
+            var _this = this;
+            table.on('checkbox(test)', function(obj){
+                var data = obj.type == 'one' ? [obj.data] : pageData;
+                $.each(data, function(k, v) {
+                    if (obj.checked) {
+                        layui.sessionData('checkedPassenger', {
+                            key: v.userId, value: v
+                        });
+                    } else {
+                        layui.sessionData('checkedPassenger', {
+                            key: v.userId, remove: true
+                        });
+                    }
+                });
+            });
+        },
+        getDefaultData:function(){
+            $.each(layui.sessionData('passengerList'),function(k,v){
+                layui.sessionData('checkedPassenger',{
+                    key: v.userId, value: v
+                })
+            })
+        }
+    };
+
+    couponPassenger.defaultEvent();
+    couponPassenger.toolBar();
+    couponPassenger.getData();
+    couponPassenger.getDefaultData()
+
+})
+</script>
+{% endblock %}

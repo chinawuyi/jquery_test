@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>公司名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入公司名称" type="text" id="chineseName" name="chineseName" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>公司账户名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入公司账户名称" type="text" id="accountName" name="accountName" lay-verify="required">
+                </td>                
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>联系人:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入联系人" type="text" id="contacts" name="contacts" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>联系人手机号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入联系人手机号" type="text" id="contactsCellphone" name="contactsCellphone" lay-verify="required|phone">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>签约时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入签约时间" type="text" id="signTime" name="signTime" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>到期时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择到期时间" type="text" id="expireTime" name="expireTime" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>合同编号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入合同编号" type="text" id="licenseNo" name="licenseNo" lay-verify="required">
+                </td>
+                <td class="label-title">对公账户开户行:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入对公账户开户行" type="text" id="bankName" name="bankName">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">所属城市:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="city" name="city" value="">
+                    </select>
+                </td>
+                <td class="label-title">允许加入的最大数:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入允许加入的最大数" type="text" id="maxNum" name="maxNum">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>法人代表:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入法人代表" type="text" id="legalPerson" name="legalPerson" lay-verify="required">
+                </td>
+                <td class="label-title">对公账户卡号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入对公账户卡号" type="text" id="bankCard" name="bankCard">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title">类型:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="type" name="type" value="" placeholder="请选择">
+                    </select>
+                </td>
+                <td class="label-title">状态:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="status" name="status" value="" placeholder="请选择">
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/driver_labor_add.js"></script>
+</body>
+</html>

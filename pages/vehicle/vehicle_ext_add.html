@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆类型:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆类型"  lay-verify="required" type="text" id="vehicle_type"  name="vehicle_type">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>车辆所有人:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车辆所有人"  lay-verify="required" type="text" id="owner_name"  name="owner_name">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>网络预约出租汽车运输证发证机构:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="网络预约出租汽车运输证发证机构"  lay-verify="required" type="text" id="trans_agency"  name="trans_agency">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>网约车初次登记日期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="网约车初次登记日期"  readonly="readonly" lay-verify="required" type="text" id="certify_date_b"  name="certify_date_b">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆运输证有效期起:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆运输证有效期起"  lay-verify="required" type="text" readonly="readonly" id="trans_date_start"  name="trans_date_start">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>车辆运输证有效期止:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车辆运输证有效期止"  lay-verify="required" type="text" readonly="readonly" id="trans_date_stop"  name="trans_date_stop">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆下次年检时间:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆下次年检时间"  lay-verify="required" readonly="readonly" type="text" id="next_fix_date"  name="next_fix_date">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>车辆年度审验日期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="车辆年度审验日期"  lay-verify="required" readonly="readonly" type="text" id="check_date"  name="check_date">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆检修状态:</td>
+                <td class="label-content" >
+                    <!-- <input class="form-control" placeholder="车辆检修状态"  lay-verify="required" type="text" id="fix_state"  name="fix_state"> -->
+                    <select class="form-control input-sm" lay-verify="required" name="fix_state" id="fix_state">
+                        <option value="0">未检修</option>
+                        <option value="1">已检修</option>
+                        <option value="2">未知</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>卫星定位装置型号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="卫星定位装置型号"  lay-verify="required" type="text" id="gps_model"  name="gps_model">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆年度审验状态:</td>
+                <td class="label-content" >
+                    <!-- <input class="form-control" placeholder="车辆年度审验状态"  lay-verify="required" type="text" id="check_state"  name="check_state"> -->
+                    <select class="form-control input-sm" lay-verify="required" name="check_state" id="check_state">
+                        <option value="0">未年审</option>
+                        <option value="1">年审不合格</option>
+                        <option value="2">年审合格</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>发票打印设备序列号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="发票打印设备序列号"  lay-verify="required" type="text" id="fee_printid"  name="fee_printid">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>卫星定位装置品牌:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="卫星定位装置品牌"  lay-verify="required" type="text" id="gps_brand"  name="gps_brand">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>卫星定位装置IMEI号:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="卫星定位装置IMEI号" lay-verify="required" type="text" id="gps_imei"  name="gps_imei">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>营运类型:</td>
+                <td class="label-content" >
+                    <!-- <input class="form-control" placeholder="营运类型"  lay-verify="required" type="text" id="commercial_type"  name="commercial_type"> -->
+                    <select class="form-control input-sm" lay-verify="required" name="commercial_type" id="commercial_type">
+                        <option value="1">网络预约出租车</option>
+                        <option value="2">巡游出租车</option>
+                        <option value="3">年审合格</option>
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>运价类型编码:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="运价类型编码"  lay-verify="required" type="text" id="fare_type"  name="fare_type">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>车辆技术状况:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="车辆技术状况"  lay-verify="required" type="text" id="vehicle_tec"  name="vehicle_tec">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>安全性能情况:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="安全性能情况"  lay-verify="required" type="text" id="vehicle_safe"  name="vehicle_safe">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>卫星定位装置安装日期:</td>
+                <td class="label-content" >
+                    <input class="form-control" placeholder="卫星定位装置安装日期" readonly="readonly" lay-verify="required" type="text" id="gps_install_date"  name="gps_install_date">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>车辆注册日期</td>
+                <td class="label-content">
+                     <input class="form-control" placeholder="车辆注册日期" readonly="readonly" lay-verify="required" type="text" id="certifyDateA"  name="certifyDateA">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/vehicle_ext_add.js"></script>
+</body>
+</html>

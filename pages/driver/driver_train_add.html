@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1"  lay-filter="first" onsubmit="return false">
+        <table class="layui-table">
+            <tbody>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>培训名称:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请输入培训名称" type="text" id="courseName" name="courseName" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>培训日期:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择培训日期" type="text" id="courseDate" name="courseDate" lay-verify="required">
+                </td>                
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>培训起始时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择培训起始时间" type="text" id="startTime" name="startTime" lay-verify="required">
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>培训结束时间:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请选择培训结束时间" type="text" id="stopTime" name="stopTime" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>培训类型:</td>
+                <td class="label-content">
+                    <select class="form-control input-sm" id="type" name="type" value="" lay-verify="required">
+                        <option value="">请选择</option>
+                        <!-- <option value="GQ">岗前</option>
+                        <option value="RC">日常</option> -->
+                    </select>
+                </td>
+                <td class="label-title"><span class="required-icon">*</span>培训师姓名:</td>
+                <td class="label-content">
+                    <input class="form-control" placeholder="请填写培训师姓名" type="text" id="trainerName" name="trainerName" lay-verify="required">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-title"><span class="required-icon">*</span>培训台账资料:</label></td>
+                <td class="label-content jsphotoshow"></td>
+                <td class="label-title">培训台账资料上传:</td>
+                <td class="label-content">
+                    <button type="button" class="layui-btn my_file_btn">
+                        <i class="layui-icon">&#xe67c;</i>上传资料
+                        <input type='text' class='trainingAccountInfo'  value="" style="display:none;" lay-verify="required"/>
+                        <input class="real_file_btn" type="file" id="trainingAccountInfo" accept="" name="trainingAccountInfo" />
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <div class="form-actions">
+                <div class="row" align="center">
+                    <div class="col-md-12">
+                        <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+                        <button class="layui-btn" lay-submit lay-filter="*" id="jsSub">保存</button>
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="/js/libs/cos-js-sdk-v5.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/driver_train_add.js"></script>
+</body>
+</html>

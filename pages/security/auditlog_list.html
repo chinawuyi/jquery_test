@@ -1,0 +1,64 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}登录日志{% endblock %}
+{% block header %}
+<style type="text/css">
+.layui-input-block{
+    margin-left: 115px;
+  }
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}   
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">起始时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请选择起始时间" autocomplete="off" class="layui-input" name='startTime' id="startTime" readonly>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束时间：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请选择起始时间" autocomplete="off" class="layui-input" name='endTime' id="endTime" readonly>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户ID：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入用户ID" autocomplete="off" class="layui-input" name='userId' id="userId">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入用户名" autocomplete="off" class="layui-input" name='userName' id="userName">
+                        </div>
+                    </div>
+                    <button id="searchBt" class="layui-btn layui-btn-sm" lay-submit lay-filter="searchLog" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/auditlog_list.js"></script>
+{% endblock %}

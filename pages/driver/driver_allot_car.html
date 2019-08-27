@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+<style type="text/css">
+  .layui-form-label{width: 75px;}
+  .layui-input-block{margin-left: 105px;}
+  .layui-input{padding-right:30px; }
+  .form-btnField{margin-left: 20px;}
+</style>
+</head>
+<body>
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <form class="layui-form" onsubmit="return false">
+                <div class="layui-form-item" style='padding-top:10px;'>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">车辆品牌：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" lay-filter="carBrandId" id="carBrandId" name="carBrandId" placeholder="请选择车辆品牌">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">车系：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" lay-filter="carModelId" id="carModelId" name="carModelId" placeholder="请选择车系">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">车款：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="carAttributeId" name="carAttributeId" placeholder="请选择车款">
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="layui-inline">
+                        <label class="layui-form-label">车型：</label>
+                        <div class="layui-input-block">
+                            <select class="form-control input-sm" id="carTypeId" name="carTypeId" placeholder="请选择车型">
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="layui-inline">
+                        <label class="layui-form-label">车牌：</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请输入车牌" autocomplete="off" class="layui-input" name='carNumber' id="carNumber">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            <button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '/js/extends/'
+    })
+</script>
+<script type="text/javascript" src="/js/pages/driver_allot_car.js"></script>
+</body>
+</html>

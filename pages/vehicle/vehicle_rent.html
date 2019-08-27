@@ -1,0 +1,51 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}车辆管理{% endblock %}
+{% block header %}
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/dataTables.bootstrap.min.css">
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <header style="height: 100%">
+            <div align="left">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <form class="form-inline" onsubmit="return false">
+                                <div class="form-group">
+                                    中文名称：
+                                    <input id="chineseName" name="chineseName" type="text" class="form-control" placeholder="中文名称">
+                                    英文名称：
+                                    <input id="englishName" name="englishName" type="text" class="form-control" placeholder="英文名称">
+                                    <button id="searchBt" class="layui-btn layui-btn-sm" permission="sys:user:query"><i class="layui-icon">&#xe615;</i>搜索</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+        <div>
+            <div class="widget-body no-padding">
+                <script type="text/html" id="toolbarDemo">
+                    <div class="layui-btn-container">
+                        <button class="layui-btn layui-btn-sm" id="jsVehicleBrandAdd" lay-event="add" permission="sys:vehicle:add">
+                            <i class="layui-icon">&#xe608;</i> 添加
+                        </button>
+                    </div>
+                </script>
+                <table id="demo" lay-filter="test"></table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="/js/pages/vehicle_rent.js"></script>
+{% endblock %}
+

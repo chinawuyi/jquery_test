@@ -1,0 +1,74 @@
+{% extends '../../pages-layout/default.html' %}
+
+{% block title %}角色{% endblock %}
+{% block header %}
+<link rel="stylesheet" href="../../css/lib/ztree/zTreeStyle/zTreeStyle.css" type="text/css">
+<style type="text/css">
+  body{margin: 0 10px;}
+  .desc{width: 380px!important;}
+  .ztree{
+    margin-top: 10px;
+    border: 1px solid #617775;
+    width: 220px;
+    height: 360px;
+    overflow-y: scroll;
+    overflow-x: auto;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<form class="layui-form" onsubmit="return false">
+  <div class="layui-row">
+    角色:
+    <div class="layui-inline">
+      <input type="text" id="name" placeholder="请输入 " autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-inline">
+      <button id="searchBt" class="layui-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+    </div>
+    <div class="layui-inline">
+      <button id="addBt" class="layui-btn hide" permission="sys:role:add"><i class="layui-icon">&#xe608;</i> 添加</button>
+    </div>
+  </div>  
+</form>
+<table class="layui-hide" id="rolelist" lay-filter="rolelist"></table>
+<script type="text/text" id="tableOps">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+</script>
+<script type="text/text" id="addLayer">
+<form class="layui-form" action="" lay-filter="addrole" id="addrole">
+  <div class="layui-form-item">
+    <label class="layui-form-label">角色</label>
+    <div class="layui-input-inline">
+      <input type="text" name="name" lay-verify="required|userNameCheck" autocomplete="off" class="layui-input name">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-inline desc">
+      <input type="text" name="description" lay-verify="required" autocomplete="off" class="layui-input description">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">权限</label>
+    <div class="layui-input-inline">
+      <ul id="treeDemo" class="ztree"></ul>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+      <button class="layui-btn" lay-submit="" lay-filter="addrole-btn">提交</button>
+    </div>
+  </div>
+</script>
+
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="../../js/libs/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="/js/pages/role_list.js"></script>
+{% endblock %}
+
+

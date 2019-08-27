@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" media="screen" href="../../css/lib/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="../../css/global.css">
+  <style>
+    .labelInput {
+      border: none;
+      background: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form class="layui-form layui-form-pane1" lay-filter="first">
+      <div class="layui-collapse">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">发票信息</h2>
+          <div class="layui-colla-content layui-show">
+            <table class="layui-table">
+              <tbody>
+                <tr>
+                  <td class="label-title">发票号码</label></td>
+                  <td class="label-content">
+                    <input value="" name="invoiceCode2" disabled class='labelInput' />
+                  </td>
+                  <!-- no -->
+                  <td class="label-title">会员账号</td>
+                  <td class="label-content">
+                    <input value="" name="customerId" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">发票抬头</label></td>
+                  <td class="label-content">
+                    <input value="" name="invoiceTitle" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">抬头类型</td>
+                  <td class="label-content">
+                    <input value="" name="titleType" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">纳税人识别码</label></td>
+                  <td class="label-content">
+                    <input value="" name="ivcTaxNo" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">发票内容</td>
+                  <td class="label-content">
+                    <input value="" name="content" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">开票金额</label></td>
+                  <td class="label-content">
+                    <input value="" name="amount" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">电子邮箱</td>
+                  <td class="label-content">
+                    <input value="" name="email" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">开票分公司</td>
+                  <td class="label-content">
+                    <input value="" name="ivcCompanyName" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">开票日期</label></td>
+                  <td class="label-content">
+                    <input value="" name="invoiceTime" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">税额</td>
+                  <td class="label-content">
+                    <input value="" name="taxAmount" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">红冲标志/原因</td>
+                  <td class="label-content">
+                    <input value="" name="cancelFlag" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">红冲/原票号</label></td>
+                  <td class="label-content">
+                    <input value="" name="cancelInvoiceId" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">发票类型</label></td>
+                  <td class="label-content">
+                    <input value="" name="invoiceType" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                  <td class="label-title">红冲操作人</label></td>
+                  <td class="label-content">
+                    <input value="" name="operator" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">操作日期</label></td>
+                  <td class="label-content">
+                    <input value="" name="updateTime" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <!-- <tr>
+                  <td class="label-title">创建人</label></td>
+                  <td class="label-content">
+                    <input value="" name="productTypeId" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">创建日期</label></td>
+                  <td class="label-content">
+                    <input value="" name="createTime" disabled class='labelInput' />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-title">最后修改人</label></td>
+                  <td class="label-content">
+                    <input value="" name="productTypeId" disabled class='labelInput' />
+                  </td>
+                  <td class="label-title">修改日期</label></td>
+                  <td class="label-content">
+                    <input value="" name="updateTime" disabled class='labelInput' />
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">发票明细</h2>
+          <div class="layui-colla-content">
+            <!-- <table class="layui-table">
+              <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>开票内容</th>
+                  <th>金额（元）</th>
+                  <th>税额（元）</th>
+                  <th>合计（元）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>交通运输</td>
+                  <td>12</td>
+                  <td>34</td>
+                  <td>34</td>
+                </tr>
+              </tbody>
+            </table> -->
+            <table id="invoiceDetailList" lay-filter="test"></table>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">订单明细</h2>
+          <div class="layui-colla-content">
+              <table id="orderDetailList" lay-filter="test"></table>
+          </div>
+        </div>
+      </div>
+      <fieldset>
+        <div class="form-actions">
+          <div class="row" align="center">
+            <div class="col-md-12">
+              <button type="reset" class="layui-btn layui-btn-primary" id="jsBrandBack">返回</button>
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+  <script type="text/javascript" src="/layui/layui.js"></script>
+  <script type="text/javascript" src="/js/libs/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript">
+    layui.config({
+      base: '/js/extends/'
+    })
+  </script>
+  <script type="text/javascript" src="/js/pages/invoice_list_view.js"></script>
+</body>
+
+</html>
