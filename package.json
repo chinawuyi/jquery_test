@@ -30,6 +30,6 @@
     }
   },
   "dependencies": {
-    "cos-js-sdk-v5": "^0.5.7"
+    "cos-js-sdk-v5": "^1.4.6"
   }
 }
