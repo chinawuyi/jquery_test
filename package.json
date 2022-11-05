@@ -15,7 +15,7 @@
     "del": "^3.0.0",
     "express": "^4.16.4",
     "gulp": "^4.0.0",
-    "gulp-swig": "^0.8.0",
+    "gulp-swig": "^0.9.1",
     "http-proxy-middleware": "^0.19.1"
   },
   "dist": "../resources/static",
